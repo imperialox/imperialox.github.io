@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Système IoT Intelligent - Yassine LAKHAL</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        .project-hero {
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            padding: 100px 0 60px;
+            text-align: center;
+            color: white;
+        }
+        
+        .project-hero h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            background: var(--gradient-accent);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .project-hero .subtitle {
+            font-size: 1.2rem;
+            color: var(--text-secondary);
+            margin-bottom: 40px;
+        }
+        
+        .project-content {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 60px 20px;
+        }
+        
+        .project-image-large {
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+            border-radius: 15px;
+            margin-bottom: 40px;
+            box-shadow: var(--shadow);
+        }
+        
+        .project-details {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 60px;
+            margin-bottom: 60px;
+        }
+        
+        .project-description {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: var(--text-secondary);
+        }
+        
+        .project-description h3 {
+            color: var(--text-primary);
+            margin: 30px 0 15px;
+            font-size: 1.3rem;
+        }
+        
+        .project-sidebar {
+            background: var(--background-card);
+            padding: 30px;
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+            border: 1px solid var(--border-color);
+            height: fit-content;
+        }
+        
+        .tech-stack {
+            margin-bottom: 30px;
+        }
+        
+        .tech-stack h4 {
+            color: var(--accent-color);
+            margin-bottom: 15px;
+            font-size: 1.1rem;
+        }
+        
+        .tech-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        
+        .tech-tag {
+            background: var(--accent-color);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+        
+        .project-links {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+        
+        .project-link {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 12px 20px;
+            background: var(--background-card);
+            border: 1px solid var(--border-color);
+            border-radius: 10px;
+            color: var(--text-primary);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+        
+        .project-link:hover {
+            background: var(--accent-color);
+            color: white;
+            transform: translateY(-2px);
+        }
+        
+        .back-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 12px 24px;
+            background: var(--background-card);
+            border: 1px solid var(--border-color);
+            border-radius: 50px;
+            color: var(--text-primary);
+            text-decoration: none;
+            transition: var(--transition);
+            margin-bottom: 40px;
+        }
+        
+        .back-button:hover {
+            background: var(--accent-color);
+            color: white;
+            transform: translateY(-2px);
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin: 40px 0;
+        }
+        
+        .feature-card {
+            background: var(--background-card);
+            padding: 30px;
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+            border: 1px solid var(--border-color);
+            transition: var(--transition);
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow);
+        }
+        
+        .feature-icon {
+            width: 50px;
+            height: 50px;
+            background: var(--gradient-accent);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+        }
+        
+        .feature-card h4 {
+            color: var(--text-primary);
+            margin-bottom: 10px;
+            font-size: 1.2rem;
+        }
+        
+        .feature-card p {
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+        
+        @media (max-width: 768px) {
+            .project-details {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+            
+            .project-hero h1 {
+                font-size: 2rem;
+            }
+            
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <span class="logo-text">YL</span>
+            </div>
+            <ul class="nav-menu">
+                <li class="nav-item">
+                    <a href="index.html" class="nav-link">Accueil</a>
+                </li>
+                <li class="nav-item">
+                    <a href="index.html#about" class="nav-link">À propos</a>
+                </li>
+                <li class="nav-item">
+                    <a href="index.html#skills" class="nav-link">Compétences</a>
+                </li>
+                <li class="nav-item">
+                    <a href="index.html#projects" class="nav-link">Projets</a>
+                </li>
+                <li class="nav-item">
+                    <a href="index.html#contact" class="nav-link">Contact</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="project-hero">
+        <div class="container">
+            <a href="index.html#projects" class="back-button">
+                <i class="fas fa-arrow-left"></i>
+                Retour aux projets
+            </a>
+            <h1>Système IoT Intelligent</h1>
+            <p class="subtitle">Réseau de capteurs connectés avec traitement de données en temps réel</p>
+        </div>
+    </section>
+
+    <!-- Project Content -->
+    <section class="project-content">
+        <div class="container">
+            <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&h=400&fit=crop" alt="Système IoT" class="project-image-large">
+            
+            <div class="project-details">
+                <div class="project-description">
+                    <h3>🎯 Objectif du Projet</h3>
+                    <p>Développer un réseau intelligent de capteurs connectés pour la surveillance environnementale en temps réel, avec une interface web intuitive pour la visualisation et l'analyse des données collectées.</p>
+                    
+                    <h3>🔧 Fonctionnalités Principales</h3>
+                    <ul>
+                        <li><strong>Collecte de données</strong> : Mesure de température, humidité, qualité de l'air, et luminosité</li>
+                        <li><strong>Communication sans fil</strong> : Réseau WiFi et LoRa pour la connectivité longue portée</li>
+                        <li><strong>Traitement en temps réel</strong> : Analyse et agrégation des données sur serveur</li>
+                        <li><strong>Interface web</strong> : Dashboard interactif avec graphiques et alertes</li>
+                        <li><strong>Stockage de données</strong> : Base de données MongoDB pour l'historique</li>
+                        <li><strong>Notifications</strong> : Alertes par email et SMS en cas de dépassement de seuils</li>
+                    </ul>
+                    
+                    <h3>🏗️ Architecture du Système</h3>
+                    <p>Le système utilise une architecture distribuée en trois couches :</p>
+                    <ul>
+                        <li><strong>Couche capteurs</strong> : ESP32 avec capteurs environnementaux</li>
+                        <li><strong>Couche communication</strong> : Protocole MQTT pour la transmission des données</li>
+                        <li><strong>Couche application</strong> : Serveur Node.js avec base de données MongoDB</li>
+                        <li><strong>Interface utilisateur</strong> : Dashboard React avec visualisation temps réel</li>
+                    </ul>
+                    
+                    <h3>📊 Données Collectées</h3>
+                    <p>Le système collecte et analyse en continu :</p>
+                    <ul>
+                        <li><strong>Température</strong> : Précision ±0.1°C, plage -40°C à +85°C</li>
+                        <li><strong>Humidité</strong> : Précision ±2% RH, plage 0-100% RH</li>
+                        <li><strong>Qualité de l'air</strong> : CO2, particules fines (PM2.5, PM10)</li>
+                        <li><strong>Luminosité</strong> : Plage 0-100,000 lux</li>
+                        <li><strong>Pression atmosphérique</strong> : Précision ±1 hPa</li>
+                    </ul>
+                    
+                    <h3>🚀 Défis Techniques</h3>
+                    <p>Les principaux défis incluent l'optimisation de la consommation énergétique des capteurs, la gestion de la connectivité en environnement difficile, et l'implémentation d'algorithmes de prédiction pour l'anticipation des variations environnementales.</p>
+                </div>
+                
+                <div class="project-sidebar">
+                    <div class="tech-stack">
+                        <h4>Technologies Utilisées</h4>
+                        <div class="tech-tags">
+                            <span class="tech-tag">ESP32</span>
+                            <span class="tech-tag">MQTT</span>
+                            <span class="tech-tag">Node.js</span>
+                            <span class="tech-tag">MongoDB</span>
+                            <span class="tech-tag">React</span>
+                            <span class="tech-tag">WebSocket</span>
+                            <span class="tech-tag">LoRa</span>
+                            <span class="tech-tag">Arduino</span>
+                        </div>
+                    </div>
+                    
+                    <div class="project-links">
+                        <h4>Liens du Projet</h4>
+                        <a href="#" class="project-link">
+                            <i class="fab fa-github"></i>
+                            Code Source
+                        </a>
+                        <a href="#" class="project-link">
+                            <i class="fas fa-video"></i>
+                            Vidéo Démo
+                        </a>
+                        <a href="#" class="project-link">
+                            <i class="fas fa-file-pdf"></i>
+                            Documentation
+                        </a>
+                        <a href="#" class="project-link">
+                            <i class="fas fa-external-link-alt"></i>
+                            Dashboard Live
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-microchip"></i>
+                    </div>
+                    <h4>Capteurs ESP32</h4>
+                    <p>Développement de modules de capteurs basés sur ESP32 avec communication WiFi et LoRa pour une couverture étendue.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h4>Analytics en Temps Réel</h4>
+                    <p>Implémentation d'algorithmes d'analyse prédictive pour l'anticipation des tendances environnementales.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-database"></i>
+                    </div>
+                    <h4>Base de Données</h4>
+                    <p>Architecture MongoDB optimisée pour le stockage et la requête de grandes quantités de données temporelles.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-mobile-alt"></i>
+                    </div>
+                    <h4>Interface Mobile</h4>
+                    <p>Application mobile React Native pour le monitoring et la configuration des capteurs à distance.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-text">
+                    <p>&copy; 2024 Yassine LAKHAL. Tous droits réservés.</p>
+                </div>
+                <div class="footer-links">
+                    <a href="index.html">Accueil</a>
+                    <a href="index.html#about">À propos</a>
+                    <a href="index.html#skills">Compétences</a>
+                    <a href="index.html#projects">Projets</a>
+                    <a href="index.html#contact">Contact</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

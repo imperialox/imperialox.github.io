@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Système de Convoyage SysML - Yassine LAKHAL</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        .project-hero {
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            padding: 100px 0 60px;
+            text-align: center;
+            color: white;
+        }
+        
+        .project-hero h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            background: var(--gradient-accent);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .project-hero .subtitle {
+            font-size: 1.2rem;
+            color: var(--text-secondary);
+            margin-bottom: 40px;
+        }
+        
+        .project-content {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 60px 20px;
+        }
+        
+        .project-image-large {
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+            border-radius: 15px;
+            margin-bottom: 40px;
+            box-shadow: var(--shadow);
+        }
+        
+        .project-details {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 60px;
+            margin-bottom: 60px;
+        }
+        
+        .project-description {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: var(--text-secondary);
+        }
+        
+        .project-description h3 {
+            color: var(--text-primary);
+            margin: 30px 0 15px;
+            font-size: 1.3rem;
+        }
+        
+        .project-sidebar {
+            background: var(--background-card);
+            padding: 30px;
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+            border: 1px solid var(--border-color);
+            height: fit-content;
+        }
+        
+        .tech-stack {
+            margin-bottom: 30px;
+        }
+        
+        .tech-stack h4 {
+            color: var(--accent-color);
+            margin-bottom: 15px;
+            font-size: 1.1rem;
+        }
+        
+        .tech-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        
+        .tech-tag {
+            background: var(--accent-color);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+        
+        .project-links {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+        
+        .project-link {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 12px 20px;
+            background: var(--background-card);
+            border: 1px solid var(--border-color);
+            border-radius: 10px;
+            color: var(--text-primary);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+        
+        .project-link:hover {
+            background: var(--accent-color);
+            color: white;
+            transform: translateY(-2px);
+        }
+        
+        .back-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 12px 24px;
+            background: var(--background-card);
+            border: 1px solid var(--border-color);
+            border-radius: 50px;
+            color: var(--text-primary);
+            text-decoration: none;
+            transition: var(--transition);
+            margin-bottom: 40px;
+        }
+        
+        .back-button:hover {
+            background: var(--accent-color);
+            color: white;
+            transform: translateY(-2px);
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin: 40px 0;
+        }
+        
+        .feature-card {
+            background: var(--background-card);
+            padding: 30px;
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+            border: 1px solid var(--border-color);
+            transition: var(--transition);
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow);
+        }
+        
+        .feature-icon {
+            width: 50px;
+            height: 50px;
+            background: var(--gradient-accent);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+        }
+        
+        .feature-card h4 {
+            color: var(--text-primary);
+            margin-bottom: 10px;
+            font-size: 1.2rem;
+        }
+        
+        .feature-card p {
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+        
+        @media (max-width: 768px) {
+            .project-details {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+            
+            .project-hero h1 {
+                font-size: 2rem;
+            }
+            
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <span class="logo-text">YL</span>
+            </div>
+            <ul class="nav-menu">
+                <li class="nav-item">
+                    <a href="index.html" class="nav-link">Accueil</a>
+                </li>
+                <li class="nav-item">
+                    <a href="index.html#about" class="nav-link">À propos</a>
+                </li>
+                <li class="nav-item">
+                    <a href="index.html#skills" class="nav-link">Compétences</a>
+                </li>
+                <li class="nav-item">
+                    <a href="index.html#projects" class="nav-link">Projets</a>
+                </li>
+                <li class="nav-item">
+                    <a href="index.html#contact" class="nav-link">Contact</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="project-hero">
+        <div class="container">
+            <a href="index.html#projects" class="back-button">
+                <i class="fas fa-arrow-left"></i>
+                Retour aux projets
+            </a>
+            <h1>Système de Convoyage Automatisé</h1>
+            <p class="subtitle">Modélisation SysML d'un système de transport de bennes avec gestion CAN</p>
+        </div>
+    </section>
+
+    <!-- Project Content -->
+    <section class="project-content">
+        <div class="container">
+            <img src="https://images.unsplash.com/photo-1565793298595-6a879b1d9492?w=800&h=400&fit=crop" alt="Système de Convoyage" class="project-image-large">
+            
+            <div class="project-details">
+                <div class="project-description">
+                    <h3>🎯 Objectif du Projet</h3>
+                    <p>Modéliser, simuler et concevoir le système de contrôle d'un système de convoyage automatisé transportant des bennes de matières premières vers un four via trois tapis roulants (A, B, C) et une griffe d'aiguillage, selon une méthodologie SysML/UML basée sur un processus en spirale.</p>
+                    
+                    <h3>🏭 Contexte du Système</h3>
+                    <p>Le système transporte des bennes de matières premières vers un four via trois tapis (A, B, C) et une griffe d'aiguillage. Chaque cycle (A ou B) fonctionne indépendamment et doit gérer la coordination sur le tapis commun C avec gestion de priorité dynamique.</p>
+                    
+                    <h3>🔧 Diagrammes SysML Réalisés</h3>
+                    <ul>
+                        <li><strong>Diagramme de cas d'utilisation (Use Case)</strong> : Identification des acteurs et fonctionnalités du système</li>
+                        <li><strong>Diagramme de blocs (BDD)</strong> : Architecture du système de convoyage et hiérarchie des composants</li>
+                        <li><strong>Diagramme interne (IBD)</strong> : Connexions et flux entre les tapis, vérin et capteurs</li>
+                        <li><strong>Diagrammes de séquence</strong> : Interactions temporelles entre les cycles A et B</li>
+                        <li><strong>Statecharts (Diagrammes d'états)</strong> : Comportement dynamique de chaque composant</li>
+                        <li><strong>Gestion des flux de variables</strong> : Communication CAN entre les modules</li>
+                    </ul>
+                    
+                    <h3>⚙️ Composants du Système</h3>
+                    <p>Le système de convoyage est composé de :</p>
+                    <ul>
+                        <li><strong>Tapis A et B</strong> : Convoyeurs d'entrée indépendants pour les cycles A et B</li>
+                        <li><strong>Tapis C</strong> : Convoyeur commun vers le four avec gestion de priorité</li>
+                        <li><strong>Vérin d'aiguillage</strong> : Griffe orientable pour diriger les bennes</li>
+                        <li><strong>Capteurs de présence</strong> : Détection des bennes sur chaque tapis</li>
+                        <li><strong>Communication CAN</strong> : Bus de terrain pour le pilotage des actionneurs</li>
+                        <li><strong>Maquette physique</strong> : Système réel pour validation et tests</li>
+                    </ul>
+                    
+                    <h3>🔄 Travail Réalisé</h3>
+                    <ul>
+                        <li><strong>Prise en main</strong> : Pilotage de la maquette physique via bus CAN</li>
+                        <li><strong>Conception SysML</strong> : Développement des diagrammes use case, BDD, IBD, séquences et statecharts</li>
+                        <li><strong>Cycle A</strong> : Implémentation du contrôle complet du premier cycle</li>
+                        <li><strong>Cycle B</strong> : Extension avec gestion de priorité dynamique (B prioritaire sauf si cycle A engagé)</li>
+                        <li><strong>Optimisation</strong> : Gestion intelligente du vérin d'aiguillage</li>
+                        <li><strong>Tolérance aux fautes</strong> : Détection de capteurs défaillants, chute de benne, blocage du vérin</li>
+                    </ul>
+                    
+                    <h3>🏗️ Architecture Modulaire</h3>
+                    <p>Le système utilise une architecture orientée objets avec séparation des responsabilités :</p>
+                    <ul>
+                        <li><strong>Bloc Tapis</strong> : Modèle générique pour tapis A et B avec capteurs et moteurs</li>
+                        <li><strong>Bloc TapisC</strong> : Tapis commun avec gestion de priorité entre cycles</li>
+                        <li><strong>Bloc Vérin</strong> : Gestion de l'aiguillage avec états et transitions</li>
+                        <li><strong>Bloc Driver</strong> : Interface CAN pour commande des actionneurs</li>
+                        <li><strong>Architecture généralisable</strong> : Conception modulaire réutilisable</li>
+                    </ul>
+                    
+                    <h3>🚀 Compétences Mobilisées</h3>
+                    <ul>
+                        <li><strong>Modélisation SysML/UML</strong> : Statecharts, IBD, BDD, séquences</li>
+                        <li><strong>Systèmes temps réel embarqués</strong> : Conception et synchronisation</li>
+                        <li><strong>Communication CAN</strong> : Gestion du bus de terrain et protocoles</li>
+                        <li><strong>Capteurs et actionneurs</strong> : Interface avec le matériel</li>
+                        <li><strong>Conception modulaire</strong> : Architecture orientée objets</li>
+                        <li><strong>Tolérance aux fautes</strong> : Détection et gestion des erreurs</li>
+                    </ul>
+                    
+                    <h3>✅ Résultat</h3>
+                    <p>Système de convoyage modélisé et simulé avec succès. Les cycles A et B sont parfaitement synchronisés avec gestion de priorité fonctionnelle. Le projet a permis de renforcer la maîtrise des méthodologies SysML, de la gestion des flux de variables et de la tolérance aux fautes dans les systèmes embarqués temps réel.</p>
+                </div>
+                
+                <div class="project-sidebar">
+                    <div class="tech-stack">
+                        <h4>Technologies Utilisées</h4>
+                        <div class="tech-tags">
+                            <span class="tech-tag">SysML</span>
+                            <span class="tech-tag">Statecharts</span>
+                            <span class="tech-tag">BDD/IBD</span>
+                            <span class="tech-tag">Bus CAN</span>
+                            <span class="tech-tag">Temps Réel</span>
+                            <span class="tech-tag">Enterprise Architect</span>
+                        </div>
+                    </div>
+                    
+                    <div class="project-links">
+                        <h4>Liens du Projet</h4>
+                        <a href="#" class="project-link">
+                            <i class="fab fa-github"></i>
+                            Modèles SysML
+                        </a>
+                        <a href="#" class="project-link">
+                            <i class="fas fa-file-pdf"></i>
+                            Documentation
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-list-check"></i>
+                    </div>
+                    <h4>Gestion de Priorité</h4>
+                    <p>Implémentation d'un système de priorité dynamique : cycle B prioritaire sauf si cycle A déjà engagé sur tapis C.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-sitemap"></i>
+                    </div>
+                    <h4>Architecture Modulaire</h4>
+                    <p>Conception orientée objets avec blocs génériques (Tapis, TapisC, Vérin, Driver) réutilisables et extensibles.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-diagram-project"></i>
+                    </div>
+                    <h4>Communication CAN</h4>
+                    <p>Pilotage de la maquette physique via bus CAN avec gestion des capteurs et actionneurs en temps réel.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-check-double"></i>
+                    </div>
+                    <h4>Tolérance aux Fautes</h4>
+                    <p>Détection et gestion des erreurs : capteurs défaillants, chute de benne, blocage du vérin d'aiguillage.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-text">
+                    <p>&copy; 2024 Yassine LAKHAL. Tous droits réservés.</p>
+                </div>
+                <div class="footer-links">
+                    <a href="index.html">Accueil</a>
+                    <a href="index.html#about">À propos</a>
+                    <a href="index.html#skills">Compétences</a>
+                    <a href="index.html#projects">Projets</a>
+                    <a href="index.html#contact">Contact</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modélisation UML Tapis Convoyeur - Yassine LAKHAL</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        .project-hero {
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            padding: 100px 0 60px;
+            text-align: center;
+            color: white;
+        }
+        
+        .project-hero h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            background: var(--gradient-accent);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .project-hero .subtitle {
+            font-size: 1.2rem;
+            color: var(--text-secondary);
+            margin-bottom: 40px;
+        }
+        
+        .project-content {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 60px 20px;
+        }
+        
+        .project-image-large {
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+            border-radius: 15px;
+            margin-bottom: 40px;
+            box-shadow: var(--shadow);
+        }
+        
+        .project-details {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 60px;
+            margin-bottom: 60px;
+        }
+        
+        .project-description {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: var(--text-secondary);
+        }
+        
+        .project-description h3 {
+            color: var(--text-primary);
+            margin: 30px 0 15px;
+            font-size: 1.3rem;
+        }
+        
+        .project-sidebar {
+            background: var(--background-card);
+            padding: 30px;
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+            border: 1px solid var(--border-color);
+            height: fit-content;
+        }
+        
+        .tech-stack {
+            margin-bottom: 30px;
+        }
+        
+        .tech-stack h4 {
+            color: var(--accent-color);
+            margin-bottom: 15px;
+            font-size: 1.1rem;
+        }
+        
+        .tech-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        
+        .tech-tag {
+            background: var(--accent-color);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+        
+        .project-links {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+        
+        .project-link {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 12px 20px;
+            background: var(--background-card);
+            border: 1px solid var(--border-color);
+            border-radius: 10px;
+            color: var(--text-primary);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+        
+        .project-link:hover {
+            background: var(--accent-color);
+            color: white;
+            transform: translateY(-2px);
+        }
+        
+        .back-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 12px 24px;
+            background: var(--background-card);
+            border: 1px solid var(--border-color);
+            border-radius: 50px;
+            color: var(--text-primary);
+            text-decoration: none;
+            transition: var(--transition);
+            margin-bottom: 40px;
+        }
+        
+        .back-button:hover {
+            background: var(--accent-color);
+            color: white;
+            transform: translateY(-2px);
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin: 40px 0;
+        }
+        
+        .feature-card {
+            background: var(--background-card);
+            padding: 30px;
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+            border: 1px solid var(--border-color);
+            transition: var(--transition);
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow);
+        }
+        
+        .feature-icon {
+            width: 50px;
+            height: 50px;
+            background: var(--gradient-accent);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+        }
+        
+        .feature-card h4 {
+            color: var(--text-primary);
+            margin-bottom: 10px;
+            font-size: 1.2rem;
+        }
+        
+        .feature-card p {
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+        
+        @media (max-width: 768px) {
+            .project-details {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+            
+            .project-hero h1 {
+                font-size: 2rem;
+            }
+            
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <span class="logo-text">YL</span>
+            </div>
+            <ul class="nav-menu">
+                <li class="nav-item">
+                    <a href="index.html" class="nav-link">Accueil</a>
+                </li>
+                <li class="nav-item">
+                    <a href="index.html#about" class="nav-link">À propos</a>
+                </li>
+                <li class="nav-item">
+                    <a href="index.html#skills" class="nav-link">Compétences</a>
+                </li>
+                <li class="nav-item">
+                    <a href="index.html#projects" class="nav-link">Projets</a>
+                </li>
+                <li class="nav-item">
+                    <a href="index.html#contact" class="nav-link">Contact</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="project-hero">
+        <div class="container">
+            <a href="index.html#projects" class="back-button">
+                <i class="fas fa-arrow-left"></i>
+                Retour aux projets
+            </a>
+            <h1>Modélisation UML Tapis Convoyeur Industriel</h1>
+            <p class="subtitle">Conception orientée objet d'un système de convoyage automatisé</p>
+        </div>
+    </section>
+
+    <!-- Project Content -->
+    <section class="project-content">
+        <div class="container">
+            <img src="convoyeur.png" alt="Tapis Convoyeur" class="project-image-large">
+            
+            <div class="project-details">
+                <div class="project-description">
+                    <h3>🎯 Objectif du Projet</h3>
+                    <p>Réaliser une modélisation complète en UML d'un système de tapis convoyeur industriel automatisé, incluant l'analyse des besoins, la conception orientée objet, et la modélisation du comportement dynamique pour un système de tri et de transport de produits.</p>
+                    
+                    <h3>🔧 Diagrammes UML Réalisés</h3>
+                    <ul>
+                        <li><strong>Diagramme de cas d'utilisation</strong> : Identification des acteurs et fonctionnalités</li>
+                        <li><strong>Diagramme de classes</strong> : Structure orientée objet du système</li>
+                        <li><strong>Diagramme de séquence</strong> : Interactions temporelles entre objets</li>
+                        <li><strong>Diagramme d'activités</strong> : Processus de tri et de convoyage</li>
+                        <li><strong>Diagramme d'états-transitions</strong> : Comportement des composants</li>
+                        <li><strong>Diagramme de composants</strong> : Architecture logicielle du système</li>
+                        <li><strong>Diagramme de déploiement</strong> : Infrastructure matérielle et réseau</li>
+                    </ul>
+                    
+                    <h3>🏭 Système Modélisé</h3>
+                    <p>Le projet couvre un système de convoyage complet :</p>
+                    <ul>
+                        <li><strong>Convoyeur principal</strong> : Moteurs, capteurs de présence, variateurs</li>
+                        <li><strong>Système de tri</strong> : Détection de produits, aiguillage automatique</li>
+                        <li><strong>Contrôle automatisé</strong> : PLC, logique de contrôle, supervision</li>
+                        <li><strong>Capteurs</strong> : Détection de présence, vitesse, position</li>
+                        <li><strong>Interface opérateur</strong> : HMI, monitoring, commandes manuelles</li>
+                        <li><strong>Gestion des alarmes</strong> : Détection d'erreurs, notifications</li>
+                    </ul>
+                    
+                    <h3>📊 Analyse Fonctionnelle</h3>
+                    <p>Le diagramme de cas d'utilisation identifie les fonctionnalités principales :</p>
+                    <ul>
+                        <li><strong>Démarrer/Arrêter le convoyeur</strong> : Contrôle de base du système</li>
+                        <li><strong>Configurer la vitesse</strong> : Ajustement selon les besoins</li>
+                        <li><strong>Trier les produits</strong> : Classification et aiguillage automatique</li>
+                        <li><strong>Surveiller l'état</strong> : Monitoring temps réel du système</li>
+                        <li><strong>Gérer les alarmes</strong> : Traitement des erreurs et incidents</li>
+                        <li><strong>Générer des rapports</strong> : Statistiques de production</li>
+                    </ul>
+                    
+                    <h3>🏗️ Conception Orientée Objet</h3>
+                    <p>Le diagramme de classes définit l'architecture logicielle :</p>
+                    <ul>
+                        <li><strong>Classe Convoyeur</strong> : Gère le mouvement et la vitesse</li>
+                        <li><strong>Classe Produit</strong> : Représente les objets transportés</li>
+                        <li><strong>Classe Capteur</strong> : Interface avec les capteurs physiques</li>
+                        <li><strong>Classe TrieursAutomatique</strong> : Logique de tri et d'aiguillage</li>
+                        <li><strong>Classe Contrôleur</strong> : Coordination des composants</li>
+                        <li><strong>Classe InterfaceHMI</strong> : Communication avec l'opérateur</li>
+                    </ul>
+                    
+                    <h3>⚙️ Comportement Dynamique</h3>
+                    <p>Les diagrammes de séquence décrivent les scénarios d'utilisation :</p>
+                    <ul>
+                        <li><strong>Séquence de démarrage</strong> : Initialisation et vérifications</li>
+                        <li><strong>Séquence de tri</strong> : Détection, classification, aiguillage</li>
+                        <li><strong>Séquence d'arrêt d'urgence</strong> : Procédure de sécurité</li>
+                        <li><strong>Séquence de maintenance</strong> : Mode diagnostic et test</li>
+                    </ul>
+                    
+                    <h3>🔄 États du Système</h3>
+                    <p>Le diagramme d'états-transitions modélise les modes de fonctionnement :</p>
+                    <ul>
+                        <li><strong>État Arrêt</strong> : Système inactif, prêt à démarrer</li>
+                        <li><strong>État Initialisation</strong> : Vérifications et positionnement</li>
+                        <li><strong>État Fonctionnement</strong> : Convoyage et tri actifs</li>
+                        <li><strong>État Pause</strong> : Arrêt temporaire contrôlé</li>
+                        <li><strong>État Alarme</strong> : Erreur détectée, intervention requise</li>
+                        <li><strong>État Maintenance</strong> : Mode diagnostic et réparation</li>
+                    </ul>
+                    
+                    <h3>🚀 Méthodologie de Développement</h3>
+                    <p>Le projet suit une approche structurée :</p>
+                    <ul>
+                        <li><strong>Analyse des besoins</strong> : Cahier des charges détaillé</li>
+                        <li><strong>Conception modulaire</strong> : Séparation des responsabilités</li>
+                        <li><strong>Patterns de conception</strong> : Singleton, Observer, Strategy</li>
+                        <li><strong>Documentation</strong> : Génération automatique depuis UML</li>
+                        <li><strong>Validation</strong> : Vérification de la cohérence des modèles</li>
+                    </ul>
+                </div>
+                
+                <div class="project-sidebar">
+                    <div class="tech-stack">
+                        <h4>Technologies Utilisées</h4>
+                        <div class="tech-tags">
+                            <span class="tech-tag">UML</span>
+                            <span class="tech-tag">IBM Rhapsody</span>
+                            <span class="tech-tag">Visual Paradigm</span>
+                            <span class="tech-tag">POO</span>
+                        </div>
+                    </div>
+                    
+                    <div class="project-links">
+                        <h4>Liens du Projet</h4>
+                        <a href="#" class="project-link">
+                            <i class="fab fa-github"></i>
+                            Modèles UML
+                        </a>
+                        <a href="#" class="project-link">
+                            <i class="fas fa-file-pdf"></i>
+                            Documentation
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h4>Cas d'Utilisation</h4>
+                    <p>Modélisation des fonctionnalités système avec identification complète des acteurs et interactions.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-project-diagram"></i>
+                    </div>
+                    <h4>Architecture Objet</h4>
+                    <p>Conception orientée objet avec diagramme de classes détaillé et relations entre composants.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-exchange-alt"></i>
+                    </div>
+                    <h4>Dynamique Système</h4>
+                    <p>Diagrammes de séquence et d'activités pour représenter le comportement temporel du système.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-cogs"></i>
+                    </div>
+                    <h4>États et Transitions</h4>
+                    <p>Modélisation des états de fonctionnement et des transitions entre modes opératoires.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-text">
+                    <p>&copy; 2024 Yassine LAKHAL. Tous droits réservés.</p>
+                </div>
+                <div class="footer-links">
+                    <a href="index.html">Accueil</a>
+                    <a href="index.html#about">À propos</a>
+                    <a href="index.html#skills">Compétences</a>
+                    <a href="index.html#projects">Projets</a>
+                    <a href="index.html#contact">Contact</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
+

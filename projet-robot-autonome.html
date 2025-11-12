@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Robot Autonome Intelligent - Yassine LAKHAL</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        .project-hero {
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            padding: 100px 0 60px;
+            text-align: center;
+            color: white;
+        }
+        
+        .project-hero h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            background: var(--gradient-accent);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .project-hero .subtitle {
+            font-size: 1.2rem;
+            color: var(--text-secondary);
+            margin-bottom: 40px;
+        }
+        
+        .project-content {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 60px 20px;
+        }
+        
+        .project-image-large {
+            width: 60%;
+            height: 590px;
+            object-fit: cover;
+            border-radius: 15px;
+            margin-bottom: 40px;
+            box-shadow: var(--shadow);
+        }
+        
+        .project-details {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 60px;
+            margin-bottom: 60px;
+        }
+        
+        .project-description {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: var(--text-secondary);
+        }
+        
+        .project-description h3 {
+            color: var(--text-primary);
+            margin: 30px 0 15px;
+            font-size: 1.3rem;
+        }
+        
+        .project-sidebar {
+            background: var(--background-card);
+            padding: 30px;
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+            border: 1px solid var(--border-color);
+            height: fit-content;
+        }
+        
+        .tech-stack {
+            margin-bottom: 30px;
+        }
+        
+        .tech-stack h4 {
+            color: var(--accent-color);
+            margin-bottom: 15px;
+            font-size: 1.1rem;
+        }
+        
+        .tech-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        
+        .tech-tag {
+            background: var(--accent-color);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+        
+        .project-links {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        
+        .project-link {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 12px 20px;
+            background: var(--background-card);
+            border: 1px solid var(--border-color);
+            border-radius: 10px;
+            color: var(--text-primary);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+        
+        .project-link:hover {
+            background: var(--accent-color);
+            color: white;
+            transform: translateY(-2px);
+        }
+        
+        .back-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 12px 24px;
+            background: var(--background-card);
+            border: 1px solid var(--border-color);
+            border-radius: 50px;
+            color: var(--text-primary);
+            text-decoration: none;
+            transition: var(--transition);
+            margin-bottom: 40px;
+        }
+        
+        .back-button:hover {
+            background: var(--accent-color);
+            color: white;
+            transform: translateY(-2px);
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin: 40px 0;
+        }
+        
+        .feature-card {
+            background: var(--background-card);
+            padding: 30px;
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+            border: 1px solid var(--border-color);
+            transition: var(--transition);
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow);
+        }
+        
+        .feature-icon {
+            width: 50px;
+            height: 50px;
+            background: var(--gradient-accent);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+        }
+        
+        .feature-card h4 {
+            color: var(--text-primary);
+            margin-bottom: 10px;
+            font-size: 1.2rem;
+        }
+        
+        .feature-card p {
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+        
+        @media (max-width: 768px) {
+            .project-details {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+            
+            .project-hero h1 {
+                font-size: 2rem;
+            }
+            
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <span class="logo-text">YL</span>
+            </div>
+            <ul class="nav-menu">
+                <li class="nav-item">
+                    <a href="index.html" class="nav-link">Accueil</a>
+                </li>
+                <li class="nav-item">
+                    <a href="index.html#about" class="nav-link">À propos</a>
+                </li>
+                <li class="nav-item">
+                    <a href="index.html#skills" class="nav-link">Compétences</a>
+                </li>
+                <li class="nav-item">
+                    <a href="index.html#projects" class="nav-link">Projets</a>
+                </li>
+                <li class="nav-item">
+                    <a href="index.html#contact" class="nav-link">Contact</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="project-hero">
+        <div class="container">
+            <a href="index.html#projects" class="back-button">
+                <i class="fas fa-arrow-left"></i>
+                Retour aux projets
+            </a>
+            <h1>Robot Autonome Intelligent</h1>
+            <p class="subtitle">Navigation autonome avec vision par ordinateur et intelligence artificielle</p>
+        </div>
+    </section>
+
+    <!-- Project Content -->
+    <section class="project-content">
+        <div class="container">
+            <img src="/turtlebot.png" alt="Robot Autonome" class="project-image-large">
+            
+            <div class="project-details">
+                <div class="project-description">
+                    <h3>🎯 Objectif du Projet</h3>
+                    <p>Développer un robot mobile autonome capable de naviguer dans un environnement complexe en utilisant la vision par ordinateur et l'intelligence artificielle pour la reconnaissance d'objets et l'évitement d'obstacles en temps réel.</p>
+                    
+                    <h3>🔧 Fonctionnalités Principales</h3>
+                    <ul>
+                        <li><strong>Navigation autonome</strong> : Le robot peut se déplacer de manière indépendante dans un environnement donné</li>
+                        <li><strong>Reconnaissance d'objets</strong> : Identification et classification d'objets en temps réel</li>
+                        <li><strong>Évitement d'obstacles</strong> : Détection et contournement automatique des obstacles</li>
+                        <li><strong>Planification de trajectoire</strong> : Calcul optimal du chemin vers un objectif</li>
+                        <li><strong>Interface de contrôle</strong> : Application mobile pour le monitoring et la commande</li>
+                    </ul>
+                    
+                    <h3>🤖 Architecture Technique</h3>
+                    <p>Le robot utilise une architecture modulaire combinant plusieurs technologies :</p>
+                    <ul>
+                        <li><strong>Vision par ordinateur</strong> : Caméra RGB-D pour la perception 3D</li>
+                        <li><strong>Intelligence artificielle</strong> : Réseaux de neurones pour la reconnaissance</li>
+                        <li><strong>Contrôleur embarqué</strong> : Raspberry Pi 4 pour le traitement des données</li>
+                        <li><strong>Capteurs</strong> : LiDAR, IMU, et capteurs ultrasoniques</li>
+                        <li><strong>Communication</strong> : WiFi et Bluetooth pour la connectivité</li>
+                    </ul>
+                    
+                    <h3>📊 Résultats Obtenus</h3>
+                    <p>Le robot a démontré une précision de navigation de 95% dans des environnements contrôlés et une capacité de reconnaissance d'objets de 90% sur un dataset de 50 classes différentes. Le temps de réponse moyen pour l'évitement d'obstacles est de 50ms.</p>
+                    
+                    <h3>🚀 Défis Techniques</h3>
+                    <p>Les principaux défis relevés incluent l'optimisation des algorithmes de vision pour un traitement en temps réel, la synchronisation des données multi-capteurs, et l'implémentation d'une architecture de contrôle robuste pour gérer les situations d'urgence.</p>
+                </div>
+                
+                <div class="project-sidebar">
+                    <div class="tech-stack">
+                        <h4>Technologies Utilisées</h4>
+                        <div class="tech-tags">
+                            <span class="tech-tag">Python</span>
+                            <span class="tech-tag">OpenCV</span>
+                            <span class="tech-tag">TensorFlow</span>
+                            <span class="tech-tag">ROS</span>
+                            <span class="tech-tag">Raspberry Pi</span>
+                            <span class="tech-tag">LiDAR</span>
+                            <span class="tech-tag">Computer Vision</span>
+                            <span class="tech-tag">Machine Learning</span>
+                        </div>
+                    </div>
+                    
+                   <!-- <div class="project-links">
+                        <h4>Liens du Projet</h4>
+                        <a href="#" class="project-link">
+                            <i class="fab fa-github"></i>
+                            Code Source
+                        </a>
+                        <a href="#" class="project-link">
+                            <i class="fas fa-video"></i>
+                            Vidéo Démo
+                        </a>
+                        <a href="#" class="project-link">
+                            <i class="fas fa-file-pdf"></i>
+                            Documentation
+                        </a>
+                        <a href="#" class="project-link">
+                            <i class="fas fa-external-link-alt"></i>
+                            Site Web
+                        </a>
+                    </div>-->
+                </div>
+            </div>
+            
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-eye"></i>
+                    </div>
+                    <h4>Vision par Ordinateur</h4>
+                    <p>Implémentation d'algorithmes de traitement d'image avancés pour la détection et la reconnaissance d'objets en temps réel.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-brain"></i>
+                    </div>
+                    <h4>Intelligence Artificielle</h4>
+                    <p>Utilisation de réseaux de neurones convolutifs pour la classification et la prise de décision autonome.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-route"></i>
+                    </div>
+                    <h4>Navigation Autonome</h4>
+                    <p>Algorithme de planification de trajectoire et de localisation simultanée (SLAM) pour la navigation.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-mobile-alt"></i>
+                    </div>
+                    <h4>Interface Mobile</h4>
+                    <p>Application mobile développée pour le monitoring en temps réel et le contrôle à distance du robot.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-text">
+                    <p>&copy; 2024 Yassine LAKHAL. Tous droits réservés.</p>
+                </div>
+                <div class="footer-links">
+                    <a href="index.html">Accueil</a>
+                    <a href="index.html#about">À propos</a>
+                    <a href="index.html#skills">Compétences</a>
+                    <a href="index.html#projects">Projets</a>
+                    <a href="index.html#contact">Contact</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
