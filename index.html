@@ -3,8 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Yassine LAKHAL - Ingénieur Systèmes Embarqués & Robotique</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>Yassine LAKHAL - Ingénieur Systèmes Embarqués </title>
+    <link rel="stylesheet" href="styles.css?v=22.1">
+    <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <!-- EmailJS pour l'envoi d'emails -->
@@ -19,21 +20,29 @@
             </div>
             <ul class="nav-menu">
                 <li class="nav-item">
-                    <a href="#home" class="nav-link">Accueil</a>
+                    <a href="#home" class="nav-link" data-translate="nav-home">Accueil</a>
                 </li>
                 <li class="nav-item">
-                    <a href="#about" class="nav-link">À propos</a>
+                    <a href="#about" class="nav-link" data-translate="nav-about">À propos</a>
                 </li>
                 <li class="nav-item">
-                    <a href="#skills" class="nav-link">Compétences</a>
+                    <a href="#skills" class="nav-link" data-translate="nav-skills">Compétences</a>
                 </li>
                 <li class="nav-item">
-                    <a href="#projects" class="nav-link">Projets</a>
+                    <a href="#projects" class="nav-link" data-translate="nav-projects">Projets</a>
                 </li>
                 <li class="nav-item">
-                    <a href="#contact" class="nav-link">Contact</a>
+                    <a href="#contact" class="nav-link" data-translate="nav-contact">Contact</a>
                 </li>
             </ul>
+            <div class="language-switcher">
+                <button class="lang-btn active" data-lang="fr">
+                    <i class="fas fa-globe"></i> FR
+                </button>
+                <button class="lang-btn" data-lang="en">
+                    <i class="fas fa-globe"></i> EN
+                </button>
+            </div>
             <div class="hamburger">
                 <span class="bar"></span>
                 <span class="bar"></span>
@@ -50,13 +59,13 @@
         <div class="hero-content">
             <div class="hero-text">
                 <h1 class="hero-title">
-                    <span class="name">Yassine LAKHAL</span>
-                    <span class="title">Ingénieur Systèmes Embarqués</span>
+                    <span class="name" data-translate="hero-title">Yassine LAKHAL</span>
+                    <span class="title" data-translate="hero-subtitle" data-text="Ingénieur Systèmes Embarqués">Ingénieur Systèmes Embarqués </span>
                 </h1>
-                <p class="hero-slogan">Construire les technologies de demain</p>
+                <p class="hero-slogan" data-translate="hero-slogan">Construire les technologies de demain</p>
                 <div class="hero-buttons">
-                    <a href="#projects" class="btn btn-primary">Découvrir mes projets</a>
-                    <a href="#contact" class="btn btn-secondary">Me contacter</a>
+                    <a href="#projects" class="btn btn-primary" data-translate="hero-btn-projects">Découvrir mes projets</a>
+                    <a href="#contact" class="btn btn-secondary" data-translate="hero-btn-contact">Me contacter</a>
                 </div>
             </div>
             <div class="hero-image">
@@ -76,17 +85,17 @@
     <section id="about" class="about">
         <div class="container">
             <div class="section-header">
-                <h2 class="section-title">À propos de moi</h2>
-                <p class="section-subtitle">Passionné par l'innovation technologique</p>
+                <h2 class="section-title" data-translate="about-title">À propos de moi</h2>
+                <p class="section-subtitle" data-translate="about-subtitle">Passionné par l'innovation technologique</p>
             </div>
             <div class="about-content">
                 <div class="about-text">
-                    <p class="about-description">
+                    <p class="about-description" data-translate="about-description-1">
                         Ingénieur passionné par les systèmes embarqués et la robotique, je me spécialise dans le développement 
                         de solutions technologiques innovantes. Mon expertise couvre l'électronique, la programmation embarquée, 
                         l'intelligence artificielle et le traitement du signal.
                     </p>
-                    <p class="about-description">
+                    <p class="about-description" data-translate="about-description-2">
                         Diplômé en ingénierie des systèmes embarqués, je combine une solide formation théorique avec une 
                         passion pour l'innovation pratique. Mon objectif est de contribuer au développement de technologies 
                         qui façonnent l'avenir.
@@ -94,15 +103,15 @@
                     <div class="about-stats">
                         <div class="stat">
                             <span class="stat-number">2+</span>
-                            <span class="stat-label">Années d'expérience</span>
+                            <span class="stat-label" data-translate="stat-1-label">Années d'expérience</span>
                         </div>
                         <div class="stat">
                             <span class="stat-number">20+</span>
-                            <span class="stat-label">Projets réalisés</span>
+                            <span class="stat-label" data-translate="stat-2-label">Projets réalisés</span>
                         </div>
                         <div class="stat">
                             <span class="stat-number">10+</span>
-                            <span class="stat-label">Technologies maîtrisées</span>
+                            <span class="stat-label" data-translate="stat-3-label">Technologies maîtrisées</span>
                         </div>
                     </div>
                 </div>
@@ -131,144 +140,136 @@
                                 <p>Formation intensive en mathématiques, physique et sciences de l'ingénieur</p>
                                 <span class="timeline-date">2018-2021</span>
                             </div>
-                        </div>
-                        <!-- <div class="timeline-item">
-                            <div class="timeline-marker"></div>
-                            <div class="timeline-content">
-                                <h3>Recherche & Innovation</h3>
-                                <p>IA embarquée et traitement du signal</p>
-                                <span class="timeline-date">2022-2024</span>
+                            <div class="timeline-item">
+                                <div class="timeline-marker"></div>
+                                <div class="timeline-content">
+                                    <h3>Lycée Giocante de Casabianca</h3>
+                                    <p>Baccalauréat Scientifique avec Mention Très Bien</p>
+                                    <span class="timeline-date">2018</span>
+                                </div>
                             </div>
-                        </div> -->
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
+    
     <!-- Section Compétences -->
     <section id="skills" class="skills">
         <div class="container">
             <div class="section-header">
-                <h2 class="section-title">Compétences Techniques</h2>
-                <p class="section-subtitle">Technologies et outils que je maîtrise</p>
+                <h2 class="section-title" data-translate="skills-title">Compétences Techniques</h2>
+                <p class="section-subtitle" data-translate="skills-subtitle">Technologies et outils que je maîtrise</p>
             </div>
             <div class="skills-grid">
-                <div class="skill-category">
-                    <h3 class="category-title">Programmation</h3>
-                    <div class="skill-items">
-                        <div class="skill-item">
-                            <div class="skill-icon">
-                                <i class="fab fa-cuttlefish"></i>
-                            </div>
-                            <div class="skill-info">
-                                <span class="skill-name">C/C++</span>
-                                <div class="skill-bar">
-                                    <div class="skill-progress" data-width="95%"></div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="skill-item">
-                            <div class="skill-icon">
-                                <i class="fab fa-python"></i>
-                            </div>
-                            <div class="skill-info">
-                                <span class="skill-name">Python</span>
-                                <div class="skill-bar">
-                                    <div class="skill-progress" data-width="90%"></div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="skill-item">
-                            <div class="skill-icon">
-                                <i class="fas fa-microchip"></i>
-                            </div>
-                            <div class="skill-info">
-                                <span class="skill-name">Assembleur</span>
-                                <div class="skill-bar">
-                                    <div class="skill-progress" data-width="80%"></div>
-                                </div>
-                            </div>
-                        </div>
+                <!-- Compétence 1: Programmation Embarquée -->
+                <div class="skill-card">
+                    <div class="skill-icon-large">
+                        <i class="fas fa-microchip"></i>
                     </div>
+                    <h3 class="skill-title">Programmation Embarquée</h3>
+                    <p class="skill-description">
+                        Développement de logiciels pour systèmes embarqués en C/C++ et Python. Maîtrise des microcontrôleurs 
+                        (STM32, ESP32, Arduino) et des protocoles de communication (UART, SPI, I2C, CAN).
+                    </p>
                 </div>
 
-                <div class="skill-category">
-                    <h3 class="category-title">Matériel</h3>
-                    <div class="skill-items">
-                        <div class="skill-item">
-                            <div class="skill-icon">
-                                <i class="fas fa-microchip"></i>
-                            </div>
-                            <div class="skill-info">
-                                <span class="skill-name">ESP32/Arduino</span>
-                                <div class="skill-bar">
-                                    <div class="skill-progress" data-width="95%"></div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="skill-item">
-                            <div class="skill-icon">
-                                <i class="fas fa-microchip"></i>
-                            </div>
-                            <div class="skill-info">
-                                <span class="skill-name">STM32</span>
-                                <div class="skill-bar">
-                                    <div class="skill-progress" data-width="90%"></div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="skill-item">
-                            <div class="skill-icon">
-                                <i class="fas fa-microchip"></i>
-                            </div>
-                            <div class="skill-info">
-                                <span class="skill-name">Raspberry Pi</span>
-                                <div class="skill-bar">
-                                    <div class="skill-progress" data-width="85%"></div>
-                                </div>
-                            </div>
-                        </div>
+                <!-- Compétence 2: Robotique -->
+                <div class="skill-card">
+                    <div class="skill-icon-large">
+                        <i class="fas fa-robot"></i>
                     </div>
+                    <h3 class="skill-title">Robotique</h3>
+                    <p class="skill-description">
+                        Conception et programmation de robots autonomes. Navigation, planification de trajectoire, 
+                        contrôle moteur et intégration de capteurs pour des applications industrielles et de recherche.
+                    </p>
                 </div>
 
-                <div class="skill-category">
-                    <h3 class="category-title">Spécialités</h3>
-                    <div class="skill-items">
-                        <div class="skill-item">
-                            <div class="skill-icon">
-                                <i class="fas fa-robot"></i>
-                            </div>
-                            <div class="skill-info">
-                                <span class="skill-name">Robotique</span>
-                                <div class="skill-bar">
-                                    <div class="skill-progress" data-width="90%"></div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="skill-item">
-                            <div class="skill-icon">
-                                <i class="fas fa-brain"></i>
-                            </div>
-                            <div class="skill-info">
-                                <span class="skill-name">IA Embarquée</span>
-                                <div class="skill-bar">
-                                    <div class="skill-progress" data-width="85%"></div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="skill-item">
-                            <div class="skill-icon">
-                                <i class="fas fa-wave-square"></i>
-                            </div>
-                            <div class="skill-info">
-                                <span class="skill-name">Traitement Signal</span>
-                                <div class="skill-bar">
-                                    <div class="skill-progress" data-width="80%"></div>
-                                </div>
-                            </div>
-                        </div>
+                <!-- Compétence 3: IA Embarquée -->
+                <div class="skill-card">
+                    <div class="skill-icon-large">
+                        <i class="fas fa-brain"></i>
                     </div>
+                    <h3 class="skill-title">Intelligence Artificielle</h3>
+                    <p class="skill-description">
+                        Implémentation d'algorithmes d'IA sur microcontrôleurs avec TensorFlow Lite. Vision par ordinateur, 
+                        reconnaissance d'objets et optimisation de modèles pour systèmes contraints.
+                    </p>
+                </div>
+
+                <!-- Compétence 4: IoT & Connectivité -->
+                <div class="skill-card">
+                    <div class="skill-icon-large">
+                        <i class="fas fa-wifi"></i>
+                    </div>
+                    <h3 class="skill-title">IoT & Réseaux</h3>
+                    <p class="skill-description">
+                        Développement de systèmes IoT connectés. MQTT, WiFi, LoRa, Bluetooth. 
+                        Création d'architectures distribuées avec collecte et traitement de données en temps réel.
+                    </p>
+                </div>
+
+                <!-- Compétence 5: Traitement du Signal -->
+                <div class="skill-card">
+                    <div class="skill-icon-large">
+                        <i class="fas fa-wave-square"></i>
+                    </div>
+                    <h3 class="skill-title">Traitement du Signal</h3>
+                    <p class="skill-description">
+                        Analyse et traitement de signaux numériques. Filtrage, FFT, traitement d'images. 
+                        Applications en électronique, audio et vision par ordinateur pour systèmes embarqués.
+                    </p>
+                </div>
+
+                <!-- Compétence 6: Modélisation Système -->
+                <div class="skill-card">
+                    <div class="skill-icon-large">
+                        <i class="fas fa-project-diagram"></i>
+                    </div>
+                    <h3 class="skill-title">Modélisation SysML/UML</h3>
+                    <p class="skill-description">
+                        Ingénierie système avec SysML et UML. Conception d'architectures complexes, statecharts, 
+                        diagrammes de séquence et validation de systèmes embarqués temps réel.
+                    </p>
+                </div>
+
+                <!-- Compétence 7: Électronique -->
+                <div class="skill-card">
+                    <div class="skill-icon-large">
+                        <i class="fas fa-memory"></i>
+                    </div>
+                    <h3 class="skill-title">Électronique & PCB</h3>
+                    <p class="skill-description">
+                        Conception de circuits imprimés et systèmes électroniques. Schématique, routage PCB, 
+                        sélection de composants et prototypage pour systèmes embarqués professionnels.
+                    </p>
+                </div>
+
+                <!-- Compétence 8: IHM Qt -->
+                <div class="skill-card">
+                    <div class="skill-icon-large">
+                        <i class="fas fa-desktop"></i>
+                    </div>
+                    <h3 class="skill-title">Interfaces Graphiques Qt</h3>
+                    <p class="skill-description">
+                        Développement d'interfaces homme-machine (IHM) avec Qt/C++. Création d'applications desktop 
+                        multiplateformes, tableaux de bord temps réel et interfaces de supervision pour systèmes embarqués.
+                    </p>
+                </div>
+
+                <!-- Compétence 9: Temps Réel -->
+                <div class="skill-card">
+                    <div class="skill-icon-large">
+                        <i class="fas fa-clock"></i>
+                    </div>
+                    <h3 class="skill-title">Systèmes Temps Réel</h3>
+                    <p class="skill-description">
+                        Conception de systèmes temps réel avec RTOS (FreeRTOS, Zephyr). 
+                        Gestion de tâches, synchronisation, ordonnancement et optimisation pour applications critiques.
+                    </p>
                 </div>
             </div>
         </div>
@@ -278,18 +279,15 @@
     <section id="projects" class="projects">
         <div class="container">
             <div class="section-header">
-                <h2 class="section-title">Mes Projets</h2>
-                <p class="section-subtitle">Réalisations techniques et innovations</p>
+                <h2 class="section-title" data-translate="projects-title">Mes Projets</h2>
+                <p class="section-subtitle" data-translate="projects-subtitle">Réalisations techniques et innovations</p>
             </div>
             <div class="projects-grid">
-                <div class="project-card">
+                <div class="project-card" title="Cliquez pour voir les détails du projet Robot Autonome Intelligent">
                     <div class="project-image">
                         <img src="turtlebot.png" alt="Robot Autonome">
                         <div class="project-overlay">
-                            <div class="project-links">
-                                <a href="#" class="project-link"><i class="fab fa-github"></i></a>
-                                <a href="#" class="project-link"><i class="fas fa-external-link-alt"></i></a>
-                            </div>
+                            <h3 class="project-title">Robot Autonome Intelligent</h3>
                         </div>
                     </div>
                     <div class="project-content">
@@ -304,18 +302,15 @@
                             <span class="tech-tag">TensorFlow</span>
                             <span class="tech-tag">ROS</span>
                         </div>
-                        <a href="projet-robot-autonome.html" class="btn btn-outline">Voir plus</a>
+                        <button class="btn btn-outline btn-modal" data-project="robot-autonome">Voir plus</button>
                     </div>
                 </div>
 
-                <div class="project-card">
+                <div class="project-card" title="Cliquez pour voir les détails du Système IoT Intelligent">
                     <div class="project-image">
                         <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=400&h=300&fit=crop" alt="Système IoT">
                         <div class="project-overlay">
-                            <div class="project-links">
-                                <a href="#" class="project-link"><i class="fab fa-github"></i></a>
-                                <a href="#" class="project-link"><i class="fas fa-external-link-alt"></i></a>
-                            </div>
+                            <h3 class="project-title">Système IoT Intelligent</h3>
                         </div>
                     </div>
                     <div class="project-content">
@@ -330,44 +325,38 @@
                             <span class="tech-tag">Node.js</span>
                             <span class="tech-tag">MongoDB</span>
                         </div>
-                        <a href="projet-iot-intelligent.html" class="btn btn-outline">Voir plus</a>
+                        <button class="btn btn-outline btn-modal" data-project="iot-intelligent">Voir plus</button>
                     </div>
                 </div>
 
-                <div class="project-card">
+                <div class="project-card" title="Cliquez pour voir les détails du projet Régulateur-Limiteur & Bluetooth">
                     <div class="project-image">
-                        <img src="https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?w=400&h=300&fit=crop" alt="Modélisation SysML">
+                        <img src="ihm.png" alt="Modélisation SysML">
                         <div class="project-overlay">
-                            <div class="project-links">
-                                <a href="#" class="project-link"><i class="fab fa-github"></i></a>
-                                <a href="#" class="project-link"><i class="fas fa-external-link-alt"></i></a>
-                            </div>
+                            <h3 class="project-title">Régulateur-Limiteur & Bluetooth</h3>
                         </div>
                     </div>
                     <div class="project-content">
-                        <h3 class="project-title">Système de Convoyage Automatisé</h3>
+                        <h3 class="project-title">Régulateur-Limiteur & Bluetooth</h3>
                         <p class="project-description">
-                            Modélisation SysML d'un système de transport de bennes avec gestion de priorité, 
-                            communication CAN et tolérance aux fautes sur maquette physique.
+                            Modélisation SysML d'un véhicule avec régulateur de vitesse, limiteur intelligent 
+                            et kit main libre Bluetooth, avec statecharts et IHM de simulation.
                         </p>
                         <div class="project-tech">
                             <span class="tech-tag">SysML</span>
                             <span class="tech-tag">Statecharts</span>
-                            <span class="tech-tag">Bus CAN</span>
-                            <span class="tech-tag">Temps Réel</span>
+                            <span class="tech-tag">Rhapsody</span>
+                            <span class="tech-tag">Bluetooth</span>
                         </div>
-                        <a href="projet-sysml-automobile.html" class="btn btn-outline">Voir plus</a>
+                        <button class="btn btn-outline btn-modal" data-project="sysml-automobile">Voir plus</button>
                     </div>
                 </div>
 
-                <div class="project-card">
+                <div class="project-card" title="Cliquez pour voir les détails du projet Reconnaissance d'Image ESP32-CAM">
                     <div class="project-image">
-                        <img src="image.png" alt="ESP32-CAM">
+                        <img src="espcam.png" alt="ESP32-CAM">
                         <div class="project-overlay">
-                            <div class="project-links">
-                                <a href="#" class="project-link"><i class="fab fa-github"></i></a>
-                                <a href="#" class="project-link"><i class="fas fa-external-link-alt"></i></a>
-                            </div>
+                            <h3 class="project-title">Reconnaissance d'Image ESP32-CAM</h3>
                         </div>
                     </div>
                     <div class="project-content">
@@ -382,18 +371,15 @@
                             <span class="tech-tag">OpenCV</span>
                             <span class="tech-tag">Edge AI</span>
                         </div>
-                        <a href="projet-esp32-cam.html" class="btn btn-outline">Voir plus</a>
+                        <button class="btn btn-outline btn-modal" data-project="esp32-cam">Voir plus</button>
                     </div>
                 </div>
 
-                <div class="project-card">
+                <div class="project-card" title="Cliquez pour voir les détails du projet Modélisation UML Tapis Convoyeur">
                     <div class="project-image">
                         <img src="convoyeur.png" alt="Tapis Convoyeur UML">
                         <div class="project-overlay">
-                            <div class="project-links">
-                                <a href="#" class="project-link"><i class="fab fa-github"></i></a>
-                                <a href="#" class="project-link"><i class="fas fa-external-link-alt"></i></a>
-                            </div>
+                            <h3 class="project-title">Modélisation UML Tapis Convoyeur</h3>
                         </div>
                     </div>
                     <div class="project-content">
@@ -408,7 +394,7 @@
                             <span class="tech-tag">POO</span>
                             <span class="tech-tag">Design Patterns</span>
                         </div>
-                        <a href="projet-uml-convoyeur.html" class="btn btn-outline">Voir plus</a>
+                        <button class="btn btn-outline btn-modal" data-project="uml-convoyeur">Voir plus</button>
                     </div>
                 </div>
             </div>
@@ -419,8 +405,8 @@
     <section id="contact" class="contact">
         <div class="container">
             <div class="section-header">
-                <h2 class="section-title">Contactez-moi</h2>
-                <p class="section-subtitle">Prêt à collaborer sur votre prochain projet ?</p>
+                <h2 class="section-title" data-translate="contact-title">Contactez-moi</h2>
+                <p class="section-subtitle" data-translate="contact-subtitle">Prêt à collaborer sur votre prochain projet ?</p>
             </div>
             <div class="contact-content">
                 <div class="contact-info">
@@ -471,14 +457,14 @@
                         <div class="form-group">
                             <textarea class="form-input form-textarea" placeholder="Votre message" rows="5" required></textarea>
                         </div>
-                        <button type="submit" class="btn btn-primary btn-full">Envoyer le message</button>
+                        <button type="submit" class="btn btn-primary btn-full" data-translate="form-submit">Envoyer le message</button>
                     </form>
                 </div>
             </div>
             <div class="cv-download">
                 <a href="/CV_LAKHAL_YASSINE_ox_fr.pdf" class="btn btn-outline">
                     <i class="fas fa-download"></i>
-                    Télécharger mon CV
+                    <span data-translate="cv-download">Télécharger mon CV</span>
                 </a>
             </div>
         </div>
@@ -502,6 +488,25 @@
         </div>
     </footer>
 
-    <script src="script.js"></script>
+    <!-- Modal pour les détails des projets -->
+    <div id="projectModal" class="modal">
+        <div class="modal-content">
+            <span class="modal-close">&times;</span>
+            <div class="modal-body">
+                <div class="modal-image">
+                    <img id="modalImage" src="" alt="Project">
+                </div>
+                <div class="modal-text">
+                    <h2 id="modalTitle"></h2>
+                    <div id="modalTechTags" class="modal-tech-tags"></div>
+                    <div id="modalDescription" class="modal-description"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="translations.js?v=2.0"></script>
+    <script src="script.js?v=3.3"></script>
+    
 </body>
 </html>

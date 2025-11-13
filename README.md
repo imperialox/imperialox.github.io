@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # 🚀 Portfolio Yassine LAKHAL
 
 Site web portfolio moderne pour ingénieur en systèmes embarqués et robotique.
@@ -7,33 +6,30 @@ Site web portfolio moderne pour ingénieur en systèmes embarqués et robotique.
 
 - ✅ **Design moderne** : Minimaliste avec animations fluides
 - ✅ **Responsive** : Adapté mobile, tablette et desktop
-- ✅ **Envoi d'emails réels** : Formulaire de contact fonctionnel
-- ✅ **Pas de backend** : Tout fonctionne depuis le navigateur
-- ✅ **3 fichiers seulement** : Simple et facile à personnaliser
+- ✅ **Envoi d'emails réels** : Formulaire de contact fonctionnel avec EmailJS
+- ✅ **Multilingue** : Français/Anglais avec switcher
+- ✅ **Pages projets détaillées** : Chaque projet a sa propre page
+- ✅ **Timeline dynamique** : Parcours professionnel animé
+- ✅ **9 compétences** : Présentation en grille moderne
 
 ## 📁 Structure du Projet
 
 ```
 portfolio/
-├── index.html       # Page web principale
-├── styles.css       # Design et animations
-├── script.js        # JavaScript et EmailJS
-└── README.md        # Ce fichier
+├── index.html                      # Page principale
+├── styles.css                      # Design et animations
+├── script.js                       # JavaScript et interactions
+├── translations.js                 # Traductions FR/EN
+├── projet-*.html                   # Pages détaillées des projets
+├── *.png, *.jpeg                   # Images et logos
+└── *.md                           # Documentation
 ```
 
 ## 🚀 Démarrage Rapide
 
-### Option 1 : Double-clic (plus simple)
+### Lancer le serveur
 ```bash
-# Ouvrir directement dans le navigateur
-xdg-open index.html
-```
-
-### Option 2 : Serveur local
-```bash
-# Avec Python
 python3 -m http.server 8080
-
 # Puis ouvrir : http://localhost:8080
 ```
 
@@ -43,44 +39,26 @@ Pour que le formulaire de contact envoie de vrais emails :
 
 ### 1️⃣ Créer un compte EmailJS
 - Aller sur [https://www.emailjs.com/](https://www.emailjs.com/)
-- S'inscrire gratuitement (200 emails/mois gratuits)
+- S'inscrire gratuitement (200 emails/mois)
 
-### 2️⃣ Configurer votre email
+### 2️⃣ Configurer votre service
 - Cliquer sur **"Add New Service"**
-- Choisir **Gmail** (ou votre fournisseur)
+- Choisir **Gmail** (ou autre)
 - Connecter votre compte email
 - Noter votre **Service ID**
 
-### 3️⃣ Créer un template d'email
+### 3️⃣ Créer un template
 - Aller dans **"Email Templates"**
 - Cliquer sur **"Create New Template"**
-- Utiliser ce contenu :
-
-```
-Sujet: Nouveau message depuis votre portfolio - {{subject}}
-
-Bonjour {{to_name}},
-
-Vous avez reçu un nouveau message de {{from_name}} ({{from_email}})
-
-Sujet: {{subject}}
-
-Message:
-{{message}}
-
----
-Envoyé depuis votre portfolio
-```
-
-- **Variables à utiliser** : `from_name`, `from_email`, `subject`, `message`, `to_name`
+- Utiliser les variables : `from_name`, `from_email`, `subject`, `message`, `to_name`
 - Noter votre **Template ID**
 
-### 4️⃣ Récupérer votre clé publique
+### 4️⃣ Récupérer votre clé
 - Aller dans **"Account"** → **"General"**
 - Copier votre **Public Key**
 
 ### 5️⃣ Configurer le portfolio
-Ouvrir `script.js` et remplacer ligne 200-204 :
+Ouvrir `script.js` et remplacer (lignes ~200) :
 
 ```javascript
 const EMAILJS_CONFIG = {
@@ -90,108 +68,163 @@ const EMAILJS_CONFIG = {
 };
 ```
 
-### 6️⃣ Tester !
-- Ouvrir votre portfolio
-- Aller à la section Contact
-- Remplir le formulaire
-- Envoyer → Vous recevrez l'email ! 🎉
+## 🎨 Sections du Site
 
-## 🎨 Personnalisation
+### 🏠 Hero Section
+- Nom et titre avec animations
+- Photo de profil circulaire
+- Grille technique et code binaire en arrière-plan
+- Boutons d'action (Contact, CV)
 
-### Modifier vos informations
-**Fichier : `index.html`**
+### 👤 À Propos
+- Présentation personnelle (FR/EN)
+- Statistiques (années d'expérience, projets, technologies)
 
-- **Nom et titre** : Ligne ~48-49
-- **Photo de profil** : Ligne ~85 (remplacer l'URL)
-- **Email de contact** : Ligne ~357
-- **Liens sociaux** : Lignes ~369-371
+### 📚 Parcours
+- Timeline dynamique inversée
+- Logos des institutions
+- Alternance gauche/droite
+- Animations au scroll
 
-### Ajouter des projets
-**Fichier : `index.html`**
+### 🛠 Compétences (Nouvelle Version !)
+Grille de **9 cartes modernes** avec :
+- **Icône distinctive** pour chaque compétence
+- **Titre professionnel**
+- **Description détaillée** de l'expertise
+- **Animations au survol** :
+  - Rotation 3D de l'icône
+  - Élévation de la carte
+  - Barre turquoise en haut
+  - Ombre dynamique
 
-Dupliquer la structure `.project-card` (lignes ~202-222) :
+**Les 9 compétences** :
+1. 🔧 Programmation Embarquée (C/C++, Python, STM32, ESP32)
+2. 🤖 Robotique (Navigation, contrôle, capteurs)
+3. 🧠 Intelligence Artificielle (TensorFlow Lite, vision)
+4. 📡 IoT & Réseaux (MQTT, WiFi, LoRa, Bluetooth)
+5. 📊 Traitement du Signal (FFT, filtrage, images)
+6. 📐 Modélisation SysML/UML (Statecharts, diagrammes)
+7. ⚡ Électronique & PCB (Circuits, routage)
+8. 🖥️ Interfaces Graphiques Qt (Qt/C++, IHM, tableaux de bord)
+9. ⏱️ Systèmes Temps Réel (FreeRTOS, Zephyr)
+
+### 🚀 Projets
+- Robot Autonome (TurtleBot3)
+- Système IoT Intelligent
+- Régulateur-Limiteur de Vitesse (SysML)
+- Reconnaissance d'Image ESP32-CAM
+- Modélisation UML Convoyeur
+
+### 📧 Contact
+- Formulaire fonctionnel avec EmailJS
+- Liens sociaux (LinkedIn, GitHub, Email)
+
+## 🌐 Multilingue
+
+Changez la langue avec le switcher FR/EN :
+- Toutes les sections sont traduites
+- Sauvegarde automatique de la préférence
+- Traductions dans `translations.js`
+
+## 🎯 Personnalisation
+
+### Modifier les compétences
+Dans `index.html`, section `<div class="skills-grid">` :
 
 ```html
-<div class="project-card">
-    <div class="project-image">
-        <img src="URL_DE_VOTRE_IMAGE" alt="Votre Projet">
-        ...
+<div class="skill-card">
+    <div class="skill-icon-large">
+        <i class="fas fa-votre-icone"></i>
     </div>
-    <div class="project-content">
-        <h3 class="project-title">Titre du Projet</h3>
-        <p class="project-description">Description...</p>
-        <div class="project-tech">
-            <span class="tech-tag">Technologie 1</span>
-            <span class="tech-tag">Technologie 2</span>
-        </div>
-        <a href="#" class="btn btn-outline">Voir plus</a>
-    </div>
+    <h3 class="skill-title">Votre Compétence</h3>
+    <p class="skill-description">
+        Votre description détaillée...
+    </p>
 </div>
 ```
 
-### Modifier les compétences
-**Fichier : `index.html`**
-
-Modifier les sections `.skill-item` (lignes ~133-177) et ajuster les pourcentages dans `data-width`.
-
 ### Changer les couleurs
-**Fichier : `styles.css`**
-
-Modifier les variables CSS (lignes 2-15) :
+Dans `styles.css`, variables CSS (début du fichier) :
 
 ```css
 :root {
-    --primary-color: #1a1a2e;      /* Couleur principale */
-    --accent-color: #00d4ff;       /* Couleur d'accent */
-    /* ... */
+    --primary-color: #ffffff;
+    --accent-color: #00d4ff;
+    --gradient-accent: linear-gradient(135deg, #00d4ff, #0099cc);
 }
 ```
 
-## 🌐 Hébergement Gratuit
+### Ajouter un projet
+1. Créer `projet-nom.html` en dupliquant un projet existant
+2. Ajouter la carte dans `index.html` section projets
+3. Mettre à jour les couleurs dans `styles.css` (voir `COULEURS_PROJETS.md`)
+
+## 📱 Responsive Design
+
+✅ **Mobile** (< 768px) : 1 colonne, menu hamburger
+✅ **Tablette** (768-1024px) : 2 colonnes
+✅ **Desktop** (> 1024px) : 3 colonnes
+
+## 🛠️ Technologies Utilisées
+
+- HTML5
+- CSS3 (Grid, Flexbox, Animations)
+- JavaScript ES6+
+- EmailJS (envoi d'emails)
+- Font Awesome (icônes)
+- Google Fonts (Inter)
+
+## 📚 Documentation Additionnelle
+
+- `COMPETENCES.md` - Détails de la section compétences
+- `COULEURS_PROJETS.md` - Guide des couleurs par projet
+- `PARCOURS_TIMELINE.md` - Documentation de la timeline
+- `LANGUE.md` - Guide du système multilingue
+- `GUIDE_RAPIDE.md` - Démarrage rapide
+
+## 🌐 Hébergement
 
 ### GitHub Pages
 ```bash
-# 1. Créer un repo GitHub
-# 2. Pousser les fichiers
 git init
 git add .
-git commit -m "Initial commit"
+git commit -m "Portfolio v1.0"
 git remote add origin https://github.com/votre-username/portfolio.git
 git push -u origin main
-
-# 3. Aller dans Settings → Pages
-# 4. Sélectionner la branche main
-# 5. Votre site sera sur : https://votre-username.github.io/portfolio
 ```
 
-## 🛠️ Dépannage
+Puis dans Settings → Pages → Sélectionner `main`
+
+URL : `https://votre-username.github.io/portfolio`
+
+## 🆘 Dépannage
 
 ### Le formulaire ne fonctionne pas
-- ✅ Vérifiez que vous avez configuré EmailJS
-- ✅ Vérifiez les IDs dans `script.js`
-- ✅ Ouvrez la console du navigateur (F12) pour voir les erreurs
+- Configurez EmailJS (voir ci-dessus)
+- Vérifiez les IDs dans `script.js`
+- Ouvrez la console (F12) pour voir les erreurs
 
-### Les animations ne fonctionnent pas
-- ✅ Assurez-vous d'ouvrir avec un serveur web (pas en double-clic)
-- ✅ Vérifiez que JavaScript est activé
+### Les animations ne marchent pas
+- Utilisez un serveur web (pas de double-clic)
+- Vérifiez que JavaScript est activé
 
-### Message "EmailJS n'est pas configuré"
-- ✅ C'est normal ! Suivez les étapes de configuration ci-dessus
-- ✅ Le formulaire affichera quand même les données dans la console
+### Problème de cache
+- Rechargez avec **Ctrl + Shift + R**
+- Les versions CSS/JS sont incrémentées automatiquement
 
-## 📸 Aperçu
+## 📸 Captures d'Écran
 
-- **Design** : Minimaliste bleu nuit / turquoise
-- **Sections** : Accueil, À propos, Compétences, Projets, Contact
-- **Animations** : Fluides et modernes
-- **Mobile-friendly** : Menu hamburger adaptatif
+✨ **Design minimaliste et professionnel**
+🎯 **Animations fluides et élégantes**
+📱 **100% responsive**
+🌍 **Multilingue FR/EN**
 
 ## 🤝 Support
 
-Questions ? Consultez :
 - [Documentation EmailJS](https://www.emailjs.com/docs/)
+- [Font Awesome Icons](https://fontawesome.com/icons)
 - [MDN Web Docs](https://developer.mozilla.org/)
 
+---
 
-
-# imperialox.github.io
+Créé avec ❤️ par Yassine LAKHAL

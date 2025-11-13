@@ -29,12 +29,13 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     });
 });
 
-// Animation des barres de compétences
-const animateSkillBars = () => {
-    const skillBars = document.querySelectorAll('.skill-progress');
-    skillBars.forEach(bar => {
-        const width = bar.getAttribute('data-width');
-        bar.style.width = width;
+// Animation des cartes de compétences
+const animateSkillCards = () => {
+    const skillCards = document.querySelectorAll('.skill-card');
+    skillCards.forEach((card, index) => {
+        setTimeout(() => {
+            card.style.animation = 'fadeInUp 0.6s ease-out forwards';
+        }, index * 100);
     });
 };
 
@@ -49,9 +50,9 @@ const observer = new IntersectionObserver((entries) => {
         if (entry.isIntersecting) {
             entry.target.classList.add('animated');
             
-            // Animer les barres de compétences quand la section compétences est visible
+            // Animer les cartes de compétences quand la section compétences est visible
             if (entry.target.id === 'skills') {
-                setTimeout(animateSkillBars, 300);
+                setTimeout(animateSkillCards, 300);
             }
         }
     });
@@ -63,6 +64,34 @@ document.querySelectorAll('section').forEach(section => {
     observer.observe(section);
 });
 
+// Observer spécifique pour la timeline
+const timelineObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            const timelineBlocks = entry.target.querySelectorAll('.timeline-block');
+            timelineBlocks.forEach((block, index) => {
+                setTimeout(() => {
+                    block.style.opacity = '1';
+                    block.style.transform = 'translateY(0)';
+                }, index * 200);
+            });
+            timelineObserver.unobserve(entry.target);
+        }
+    });
+}, { threshold: 0.1 });
+
+const timeline = document.querySelector('.modern-timeline');
+if (timeline) {
+    // Initialiser tous les blocs en invisible
+    document.querySelectorAll('.timeline-block').forEach(block => {
+        block.style.opacity = '0';
+        block.style.transform = 'translateY(30px)';
+        block.style.transition = 'all 0.6s ease-out';
+    });
+    
+    timelineObserver.observe(timeline);
+}
+
 // Effet parallax pour la section hero
 window.addEventListener('scroll', () => {
     const scrolled = window.pageYOffset;
@@ -73,12 +102,13 @@ window.addEventListener('scroll', () => {
     }
 });
 
-// Animation du texte d'accueil
+// Animation du texte d'accueil avec effet dynamique
 const animateText = () => {
     const name = document.querySelector('.name');
     const title = document.querySelector('.title');
     const slogan = document.querySelector('.hero-slogan');
     
+    // Animation du nom avec effet de brillance
     if (name) {
         name.style.opacity = '0';
         name.style.transform = 'translateY(30px)';
@@ -86,9 +116,37 @@ const animateText = () => {
             name.style.transition = 'all 0.8s ease-out';
             name.style.opacity = '1';
             name.style.transform = 'translateY(0)';
+            
+            // Ajouter un effet de brillance qui passe
+            setTimeout(() => {
+                name.style.position = 'relative';
+                const shine = document.createElement('div');
+                shine.style.cssText = `
+                    position: absolute;
+                    top: 0;
+                    left: -100%;
+                    width: 100%;
+                    height: 100%;
+                    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+                    animation: shine 3s ease-in-out infinite;
+                `;
+                name.style.position = 'relative';
+                name.appendChild(shine);
+                
+                // Ajouter l'animation shine
+                const style = document.createElement('style');
+                style.textContent = `
+                    @keyframes shine {
+                        0% { left: -100%; }
+                        50%, 100% { left: 100%; }
+                    }
+                `;
+                document.head.appendChild(style);
+            }, 1000);
         }, 200);
     }
     
+    // Animation du titre avec gradient qui bouge
     if (title) {
         title.style.opacity = '0';
         title.style.transform = 'translateY(30px)';
@@ -99,6 +157,7 @@ const animateText = () => {
         }, 400);
     }
     
+    // Animation du slogan
     if (slogan) {
         slogan.style.opacity = '0';
         slogan.style.transform = 'translateY(30px)';
@@ -360,6 +419,64 @@ const createParticles = () => {
 // Lancer l'effet de particules
 createParticles();
 
+// Effet de code binaire robotique en arrière-plan
+const createBinaryRain = () => {
+    const particlesContainer = document.querySelector('.particles');
+    if (!particlesContainer) return;
+    
+    // Créer des colonnes de nombres binaires
+    for (let i = 0; i < 15; i++) {
+        const column = document.createElement('div');
+        column.style.cssText = `
+            position: absolute;
+            left: ${i * 7}%;
+            top: -100%;
+            color: rgba(0, 212, 255, 0.4);
+            font-family: 'Courier New', monospace;
+            font-size: 16px;
+            font-weight: bold;
+            white-space: nowrap;
+            animation: binaryFall ${Math.random() * 10 + 10}s linear infinite;
+            animation-delay: ${Math.random() * 5}s;
+            text-shadow: 0 0 5px rgba(0, 212, 255, 0.5);
+            letter-spacing: 2px;
+        `;
+        
+        // Générer une chaîne de 0 et 1
+        let binary = '';
+        for (let j = 0; j < 20; j++) {
+            binary += Math.random() > 0.5 ? '1 ' : '0 ';
+        }
+        column.textContent = binary;
+        particlesContainer.appendChild(column);
+    }
+    
+    // Ajouter l'animation CSS pour la chute
+    const style = document.createElement('style');
+    style.textContent = `
+        @keyframes binaryFall {
+            0% {
+                top: -100%;
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+            }
+            90% {
+                opacity: 1;
+            }
+            100% {
+                top: 110%;
+                opacity: 0;
+            }
+        }
+    `;
+    document.head.appendChild(style);
+};
+
+// Lancer l'effet de code binaire
+createBinaryRain();
+
 // Navigation active selon la section visible
 const updateActiveNav = () => {
     const sections = document.querySelectorAll('section');
@@ -467,9 +584,154 @@ const lazyLoadImages = () => {
     images.forEach(img => imageObserver.observe(img));
 };
 
+// Animations pour la timeline du parcours
+const animateTimelineOnScroll = () => {
+    const timelineBlocks = document.querySelectorAll('.timeline-block');
+    
+    timelineBlocks.forEach((block, index) => {
+        // Animation d'entrée depuis la gauche ou la droite
+        block.style.opacity = '0';
+        
+        if (block.classList.contains('timeline-left')) {
+            block.style.transform = 'translateX(-50px)';
+        } else {
+            block.style.transform = 'translateX(50px)';
+        }
+        
+        block.style.transition = `all 0.8s cubic-bezier(0.4, 0, 0.2, 1) ${index * 0.15}s`;
+    });
+    
+    // Observer pour déclencher l'animation
+    const timelineObserverAnim = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const blocks = entry.target.querySelectorAll('.timeline-block');
+                blocks.forEach(block => {
+                    block.style.opacity = '1';
+                    block.style.transform = 'translateX(0)';
+                });
+            }
+        });
+    }, { threshold: 0.2 });
+    
+    const timelineContainer = document.querySelector('.modern-timeline');
+    if (timelineContainer) {
+        timelineObserverAnim.observe(timelineContainer);
+    }
+};
+
+// Effet de pulsation sur les logos de la timeline
+const pulseTimelineIcons = () => {
+    const icons = document.querySelectorAll('.timeline-icon');
+    
+    icons.forEach((icon, index) => {
+        setTimeout(() => {
+            icon.style.animation = 'pulse 2s ease-in-out infinite';
+        }, index * 300);
+    });
+};
+
+// Ajouter l'animation de pulse en CSS
+const addPulseAnimation = () => {
+    const style = document.createElement('style');
+    style.textContent = `
+        @keyframes pulse {
+            0%, 100% {
+                transform: translate(-50%, -50%) scale(1);
+                box-shadow: 0 5px 20px rgba(0, 212, 255, 0.3);
+            }
+            50% {
+                transform: translate(-50%, -50%) scale(1.05);
+                box-shadow: 0 8px 30px rgba(0, 212, 255, 0.5);
+            }
+        }
+        
+        @keyframes drawLine {
+            from {
+                height: 0;
+            }
+            to {
+                height: 100%;
+            }
+        }
+    `;
+    document.head.appendChild(style);
+};
+
+// Animation de la ligne centrale qui se dessine
+const animateTimelineLine = () => {
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const line = entry.target.querySelector('::before');
+                entry.target.style.setProperty('--line-animation', 'drawLine 2s ease-out forwards');
+            }
+        });
+    }, { threshold: 0.1 });
+    
+    const timelineContainer = document.querySelector('.modern-timeline');
+    if (timelineContainer) {
+        observer.observe(timelineContainer);
+    }
+};
+
 // Initialisation
 document.addEventListener('DOMContentLoaded', () => {
     console.log('Portfolio de Yassine LAKHAL chargé avec succès !');
+    
+    // Lancer les animations de la timeline
+    addPulseAnimation();
+    animateTimelineOnScroll();
+    
+    // Pulse sur les icônes après un délai
+    setTimeout(pulseTimelineIcons, 1000);
+    
+    // Ajouter des effets interactifs aux cartes de timeline
+    document.querySelectorAll('.timeline-card').forEach(card => {
+        card.addEventListener('mouseenter', () => {
+            // Trouver l'icône associée
+            const block = card.closest('.timeline-block');
+            const icon = block.querySelector('.timeline-icon');
+            
+            // Effet sur la carte
+            card.style.transform = 'translateY(-10px) scale(1.02)';
+            card.style.boxShadow = '0 15px 40px rgba(0, 0, 0, 0.2)';
+            
+            // Effet sur l'icône
+            if (icon) {
+                icon.style.transform = 'translate(-50%, -50%) scale(1.15) rotate(5deg)';
+                icon.style.boxShadow = '0 10px 40px rgba(0, 212, 255, 0.6)';
+            }
+            
+            // Animer les tags
+            const tags = card.querySelectorAll('.tag');
+            tags.forEach((tag, index) => {
+                setTimeout(() => {
+                    tag.style.transform = 'translateY(-3px)';
+                    tag.style.boxShadow = '0 4px 12px rgba(0, 212, 255, 0.3)';
+                }, index * 50);
+            });
+        });
+        
+        card.addEventListener('mouseleave', () => {
+            const block = card.closest('.timeline-block');
+            const icon = block.querySelector('.timeline-icon');
+            
+            card.style.transform = 'translateY(0) scale(1)';
+            card.style.boxShadow = '0 5px 20px rgba(0, 0, 0, 0.08)';
+            
+            if (icon) {
+                icon.style.transform = 'translate(-50%, -50%) scale(1) rotate(0deg)';
+                icon.style.boxShadow = '0 5px 20px rgba(0, 212, 255, 0.3)';
+            }
+            
+            const tags = card.querySelectorAll('.tag');
+            tags.forEach(tag => {
+                tag.style.transform = 'translateY(0)';
+                tag.style.boxShadow = 'none';
+            });
+        });
+    });
     
     // Ajouter un effet de chargement
     const loader = document.createElement('div');
@@ -520,3 +782,134 @@ style.textContent = `
     }
 `;
 document.head.appendChild(style);
+
+// ========================================
+// MODAL PROJETS
+// ========================================
+
+// Données des projets
+const projectsData = {
+    'robot-autonome': {
+        title: 'Robot Autonome Intelligent - TurtleBot3',
+        image: 'turtlebot.png',
+        tags: ['Python', 'ROS', 'OpenCV', 'TensorFlow', 'Navigation'],
+        description: `
+            <p>Développement d'un système de navigation autonome pour robot mobile TurtleBot3 avec capacités de perception et de décision en temps réel. Le projet utilise ROS comme framework principal, Python pour le développement des algorithmes, OpenCV pour la vision par ordinateur et TensorFlow Lite pour l'intelligence artificielle embarquée. Le robot est capable de naviguer de manière autonome dans un environnement dynamique grâce à la cartographie SLAM (création de cartes 2D de l'environnement), la détection et reconnaissance d'objets en temps réel, et la planification de trajectoire avec les algorithmes A* et DWA. L'interface de contrôle via RViz permet le monitoring et la télé-opération. Le système atteint un taux de réussite de 95% pour l'évitement d'obstacles avec une précision de localisation de ±5cm.</p>
+        `
+    },
+    'iot-intelligent': {
+        title: 'Système IoT Intelligent',
+        image: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&h=600&fit=crop',
+        tags: ['ESP32', 'MQTT', 'Node.js', 'MongoDB', 'Cloud'],
+        description: `
+            <p>Conception et déploiement d'un réseau de capteurs IoT pour la surveillance environnementale en temps réel avec collecte, analyse et visualisation des données. Le système s'articule autour d'un réseau d'ESP32 équipés de capteurs (DHT22 pour température/humidité, MQ135 pour qualité d'air, BMP280 pour pression), communiquant via le protocole MQTT pour une transmission légère et efficace. Un backend Node.js gère le traitement et le stockage des données dans une base MongoDB optimisée pour les séries temporelles. Le dashboard React permet la visualisation en temps réel avec Chart.js et l'envoi d'alertes intelligentes si les seuils sont dépassés. Le système offre une latence moyenne de 150ms, une autonomie sur batterie de 48h et un taux de perte de paquets inférieur à 1%, avec un historique de données sur 6 mois.</p>
+        `
+    },
+    'sysml-automobile': {
+        title: 'Régulateur-Limiteur de Vitesse & Kit Bluetooth',
+        image: 'ihm.png',
+        tags: ['SysML', 'Statecharts', 'Rhapsody', 'Bluetooth', 'Temps Réel'],
+        description: `
+            <p>Modélisation système complète d'un véhicule intégrant régulateur de vitesse, limiteur intelligent et kit main libre Bluetooth selon une approche SysML avec IBM Rhapsody. Le projet modélise quatre systèmes principaux : le véhicule de base avec gestion des pédales et du moteur (temps de réponse accélération 300ms, freinage 200ms), un régulateur de vitesse maintenant automatiquement la vitesse définie au-dessus de 50 km/h avec ajustement throttle toutes les 50ms, un limiteur de vitesse permettant un ajustement fin ou rapide avec alarme en cas de dépassement, et un kit Bluetooth main libre avec jumelage sécurisé et gestion complète des appels. Les statecharts modélisent les comportements complexes et les interactions entre systèmes, avec une gestion de priorité intelligente. Le modèle complet et fonctionnel a été validé par simulation IHM, démontrant l'efficacité des statecharts pour gérer la complexité des systèmes temps réel automobiles.</p>
+        `
+    },
+    'esp32-cam': {
+        title: 'Reconnaissance d\'Image ESP32-CAM',
+        image: 'espcam.png',
+        tags: ['ESP32-CAM', 'TensorFlow Lite', 'OpenCV', 'Edge AI', 'Vision'],
+        description: `
+            <p>Développement d'un système de reconnaissance d'images en temps réel sur ESP32-CAM, intégrant des algorithmes de vision par ordinateur et d'intelligence artificielle embarquée pour la détection et classification d'objets avec des ressources matérielles limitées. Le système utilise l'ESP32-CAM (240MHz, 520KB SRAM) avec caméra OV2640 2MP, TensorFlow Lite for Microcontrollers pour l'inférence IA, et OpenCV pour le prétraitement d'images. Le pipeline capture des images 640x480, les redimensionne en 96x96 pixels pour optimiser la mémoire, applique une normalisation RGB vers grayscale, puis exécute l'inférence avec un modèle MobileNetV2 quantifié (int8, 300KB). Le système atteint une latence inférieure à 200ms par image avec une précision de 85-90% sur objets courants, un framerate de 5-10 FPS en détection continue, et permet le streaming vidéo via WiFi avec API REST et publication MQTT des événements de détection pour des applications de surveillance intelligente, comptage d'objets et détection d'intrusion low-cost.</p>
+        `
+    },
+    'uml-convoyeur': {
+        title: 'Modélisation UML Système de Convoyage',
+        image: 'convoyeur.png',
+        tags: ['UML', 'Enterprise Architect', 'POO', 'Design Patterns', 'Industrie'],
+        description: `
+            <p>Modélisation orientée objet d'un système de convoyage industriel automatisé pour le tri et l'aiguillage de bennes vers différentes destinations avec Enterprise Architect. Le système comprend trois tapis roulants (A et B en entrées, C commun vers sortie), un vérin d'aiguillage pour orienter les bennes, et des capteurs de détection de présence à chaque étape. La modélisation UML complète inclut les diagrammes structurels (classes avec architecture POO complète, composants pour modules logiciels, déploiement pour architecture matérielle) et les diagrammes comportementaux (cas d'utilisation pour cycles A et B avec gestion de priorité, séquence pour interactions temporelles, états pour tapis/vérin/contrôleur, activités pour flux de décision). Le système implémente une logique de fonctionnement avec priorité B sauf si cycle A déjà engagé, une gestion du tapis C partagé permettant un seul cycle à la fois, et une tolérance aux fautes avec détection de capteurs défaillants, gestion de chute de benne et blocage vérin. Les design patterns utilisés incluent State pour les états des tapis, Observer pour notifications capteurs, Singleton pour contrôleur unique et Factory pour création d'objets Benne, aboutissant à un modèle UML complet et validé avec architecture modulaire permettant les évolutions futures.</p>
+        `
+    }
+};
+
+// Fonction pour ouvrir la modal
+function openProjectModal(projectId) {
+    const modal = document.getElementById('projectModal');
+    const project = projectsData[projectId];
+    
+    if (!project) return;
+    
+    // Remplir le contenu
+    document.getElementById('modalTitle').textContent = project.title;
+    document.getElementById('modalImage').src = project.image;
+    document.getElementById('modalImage').alt = project.title;
+    
+    // Tags techniques
+    const tagsContainer = document.getElementById('modalTechTags');
+    tagsContainer.innerHTML = project.tags.map(tag => 
+        `<span class="tech-tag">${tag}</span>`
+    ).join('');
+    
+    // Description
+    document.getElementById('modalDescription').innerHTML = project.description;
+    
+    // Afficher la modal
+    modal.classList.add('active');
+    document.body.style.overflow = 'hidden'; // Empêcher scroll page
+}
+
+// Fonction pour fermer la modal
+function closeProjectModal() {
+    const modal = document.getElementById('projectModal');
+    modal.classList.remove('active');
+    document.body.style.overflow = ''; // Réactiver scroll page
+}
+
+// Event listeners pour les cartes de projets (toute la carte est cliquable)
+document.addEventListener('DOMContentLoaded', () => {
+    // Rendre toute la carte cliquable
+    const projectCards = document.querySelectorAll('.project-card');
+    
+    projectCards.forEach(card => {
+        card.addEventListener('click', () => {
+            const button = card.querySelector('.btn-modal');
+            if (button) {
+                const projectId = button.getAttribute('data-project');
+                openProjectModal(projectId);
+            }
+        });
+    });
+    
+    // Ancien système avec boutons (au cas où)
+    const modalButtons = document.querySelectorAll('.btn-modal');
+    
+    modalButtons.forEach(button => {
+        button.addEventListener('click', (e) => {
+            e.stopPropagation(); // Éviter double déclenchement
+            const projectId = button.getAttribute('data-project');
+            openProjectModal(projectId);
+        });
+    });
+    
+    // Fermer avec le bouton X
+    const closeBtn = document.querySelector('.modal-close');
+    if (closeBtn) {
+        closeBtn.addEventListener('click', closeProjectModal);
+    }
+    
+    // Fermer en cliquant en dehors
+    const modal = document.getElementById('projectModal');
+    if (modal) {
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) {
+                closeProjectModal();
+            }
+        });
+    }
+    
+    // Fermer avec la touche Échap
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') {
+            closeProjectModal();
+        }
+    });
+});
