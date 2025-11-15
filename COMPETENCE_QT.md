@@ -201,3 +201,8 @@ La compétence "DevOps & CI/CD" a été remplacée par "Interfaces Graphiques Qt
 
 ✨ **Compétence Qt ajoutée avec succès !**
 
+
+
+
+
+

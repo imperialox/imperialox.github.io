@@ -828,8 +828,179 @@ const projectsData = {
         description: `
             <p>Modélisation orientée objet d'un système de convoyage industriel automatisé pour le tri et l'aiguillage de bennes vers différentes destinations avec Enterprise Architect. Le système comprend trois tapis roulants (A et B en entrées, C commun vers sortie), un vérin d'aiguillage pour orienter les bennes, et des capteurs de détection de présence à chaque étape. La modélisation UML complète inclut les diagrammes structurels (classes avec architecture POO complète, composants pour modules logiciels, déploiement pour architecture matérielle) et les diagrammes comportementaux (cas d'utilisation pour cycles A et B avec gestion de priorité, séquence pour interactions temporelles, états pour tapis/vérin/contrôleur, activités pour flux de décision). Le système implémente une logique de fonctionnement avec priorité B sauf si cycle A déjà engagé, une gestion du tapis C partagé permettant un seul cycle à la fois, et une tolérance aux fautes avec détection de capteurs défaillants, gestion de chute de benne et blocage vérin. Les design patterns utilisés incluent State pour les états des tapis, Observer pour notifications capteurs, Singleton pour contrôleur unique et Factory pour création d'objets Benne, aboutissant à un modèle UML complet et validé avec architecture modulaire permettant les évolutions futures.</p>
         `
+    },
+    'robotics-designs': {
+        title: 'Robotics Designs – Exchange USA',
+        image: 'robotics-1.png',
+        images: [
+            'robotics-1.png',
+            'robotics-2.png',
+            'robotics-3.png',
+            'robotics-4.png',
+            'robotics-5.png',
+            'robotics-6.png'
+        ],
+        tags: ['Robotique', 'PID', 'Capteurs', 'Prototypage', 'SolidWorks'],
+        videos: [
+            { title: 'Défi suiveur de ligne', url: '' },
+            { title: 'Contrôle PID appliqué', url: '' },
+            { title: 'Présentation hebdomadaire', url: '' }
+        ],
+        description: `
+            <p>Projet réalisé durant l’échange académique aux États-Unis dans le cadre du cours Robotics Designs. Chaque semaine, un nouveau défi imposait de modéliser un robot en fonction d’une technologie ou d’un capteur précis (suiveur de ligne, robot PID, navigation par ultrasons, détection infrarouge, etc.). Les projets prenaient la forme d’un concours où les étudiants devaient concevoir rapidement une architecture mécanique et logicielle efficace avant de la présenter. Cette approche a renforcé la créativité, l’itération rapide et la capacité à adapter des lois de commande ou des capteurs à des environnements variés tout en documentant les choix d’ingénierie.</p>
+        `
     }
 };
+
+const modalImageElement = document.getElementById('modalImage');
+const modalImageSingleWrapper = document.getElementById('modalImageSingle');
+const modalCarousel = document.getElementById('modalCarousel');
+const modalCarouselTrack = document.getElementById('modalCarouselTrack');
+const modalCarouselIndicators = document.getElementById('modalCarouselIndicators');
+const carouselPrevBtn = document.getElementById('carouselPrev');
+const carouselNextBtn = document.getElementById('carouselNext');
+const modalVideosSection = document.getElementById('modalVideos');
+const modalVideosGrid = document.getElementById('modalVideosGrid');
+
+let currentCarouselIndex = 0;
+let currentCarouselImages = [];
+
+function showSingleImage(src, alt) {
+    if (!modalImageElement || !modalImageSingleWrapper || !modalCarousel) return;
+    
+    modalImageSingleWrapper.style.display = 'block';
+    modalImageElement.src = src;
+    modalImageElement.alt = alt;
+    
+    modalCarousel.classList.remove('active');
+    modalCarousel.setAttribute('aria-hidden', 'true');
+    if (modalCarouselTrack) modalCarouselTrack.innerHTML = '';
+    if (modalCarouselIndicators) modalCarouselIndicators.innerHTML = '';
+    
+    currentCarouselImages = [];
+    currentCarouselIndex = 0;
+}
+
+function updateCarousel() {
+    if (!modalCarouselTrack || !modalCarouselIndicators) return;
+    if (!currentCarouselImages.length) return;
+    
+    modalCarouselTrack.style.transform = `translateX(-${currentCarouselIndex * 100}%)`;
+    
+    const indicators = modalCarouselIndicators.querySelectorAll('button');
+    indicators.forEach((indicator, index) => {
+        const isActive = index === currentCarouselIndex;
+        indicator.classList.toggle('active', isActive);
+        indicator.setAttribute('aria-current', isActive ? 'true' : 'false');
+    });
+}
+
+function setupCarousel(images = [], title = '') {
+    if (!modalCarousel || !modalCarouselTrack || !modalCarouselIndicators || !modalImageSingleWrapper) return;
+    
+    if (!images.length) {
+        showSingleImage('', title);
+        return;
+    }
+    
+    modalImageSingleWrapper.style.display = images.length > 1 ? 'none' : 'block';
+    
+    if (images.length === 1) {
+        showSingleImage(images[0], title);
+        return;
+    }
+    
+    modalCarousel.classList.add('active');
+    modalCarousel.setAttribute('aria-hidden', 'false');
+    
+    modalCarouselTrack.innerHTML = images.map((src, index) => `
+        <div class="carousel-slide">
+            <img src="${src}" alt="${title} - image ${index + 1}">
+        </div>
+    `).join('');
+    
+    modalCarouselIndicators.innerHTML = images.map((_, index) => `
+        <button type="button" data-index="${index}" aria-label="Aller à l'image ${index + 1}"></button>
+    `).join('');
+    
+    currentCarouselImages = images;
+    currentCarouselIndex = 0;
+    updateCarousel();
+    
+    const indicatorButtons = modalCarouselIndicators.querySelectorAll('button');
+    indicatorButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            const targetIndex = Number(button.getAttribute('data-index'));
+            if (!Number.isNaN(targetIndex)) {
+                currentCarouselIndex = targetIndex;
+                updateCarousel();
+            }
+        });
+    });
+}
+
+function goToPreviousSlide() {
+    if (!currentCarouselImages.length) return;
+    currentCarouselIndex = (currentCarouselIndex - 1 + currentCarouselImages.length) % currentCarouselImages.length;
+    updateCarousel();
+}
+
+function goToNextSlide() {
+    if (!currentCarouselImages.length) return;
+    currentCarouselIndex = (currentCarouselIndex + 1) % currentCarouselImages.length;
+    updateCarousel();
+}
+
+function populateProjectVideos(project) {
+    if (!modalVideosSection || !modalVideosGrid) return;
+    const videos = Array.isArray(project.videos) ? project.videos.slice(0, 3) : [];
+    
+    if (!videos.length) {
+        modalVideosSection.classList.remove('active');
+        modalVideosSection.setAttribute('aria-hidden', 'true');
+        modalVideosGrid.innerHTML = '';
+        return;
+    }
+    
+    modalVideosSection.classList.add('active');
+    modalVideosSection.setAttribute('aria-hidden', 'false');
+    
+    modalVideosGrid.innerHTML = videos.map((video, index) => {
+        const title = video?.title || `Vidéo ${index + 1}`;
+        if (video?.url) {
+            return `
+                <div class="video-card">
+                    <div class="video-frame">
+                        <iframe src="${video.url}" title="${title}" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    </div>
+                    <p>${title}</p>
+                </div>
+            `;
+        }
+        return `
+            <div class="video-card placeholder">
+                <div class="video-frame">
+                    <i class="fas fa-video-slash"></i>
+                </div>
+                <p>${title} (à venir)</p>
+            </div>
+        `;
+    }).join('');
+}
+
+if (carouselPrevBtn) {
+    carouselPrevBtn.addEventListener('click', (event) => {
+        event.stopPropagation();
+        goToPreviousSlide();
+    });
+}
+
+if (carouselNextBtn) {
+    carouselNextBtn.addEventListener('click', (event) => {
+        event.stopPropagation();
+        goToNextSlide();
+    });
+}
 
 // Fonction pour ouvrir la modal
 function openProjectModal(projectId) {
@@ -840,8 +1011,18 @@ function openProjectModal(projectId) {
     
     // Remplir le contenu
     document.getElementById('modalTitle').textContent = project.title;
-    document.getElementById('modalImage').src = project.image;
-    document.getElementById('modalImage').alt = project.title;
+    
+    const hasGallery = Array.isArray(project.images) && project.images.length > 1;
+    const hasSingleArrayImage = Array.isArray(project.images) && project.images.length === 1;
+    const fallbackImage = project.image || (project.images && project.images[0]) || '';
+    
+    if (hasGallery) {
+        setupCarousel(project.images, project.title);
+    } else if (hasSingleArrayImage) {
+        showSingleImage(project.images[0], project.title);
+    } else {
+        showSingleImage(fallbackImage, project.title);
+    }
     
     // Tags techniques
     const tagsContainer = document.getElementById('modalTechTags');
@@ -851,6 +1032,9 @@ function openProjectModal(projectId) {
     
     // Description
     document.getElementById('modalDescription').innerHTML = project.description;
+    
+    // Vidéos
+    populateProjectVideos(project);
     
     // Afficher la modal
     modal.classList.add('active');

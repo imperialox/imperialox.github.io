@@ -435,3 +435,8 @@ Les pages HTML individuelles (`projet-*.html`) peuvent être :
 
 **Les projets s'affichent maintenant en pop-up !** 🎉
 
+
+
+
+
+

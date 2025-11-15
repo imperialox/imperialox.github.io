@@ -4,7 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Yassine LAKHAL - Ingénieur Systèmes Embarqués </title>
-    <link rel="stylesheet" href="styles.css?v=22.1">
+    <link rel="icon" type="image/png" href="logo.png">
+    <link rel="stylesheet" href="styles.css?v=22.6">
     <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
@@ -16,7 +17,7 @@
     <nav class="navbar">
         <div class="nav-container">
             <div class="nav-logo">
-                <span class="logo-text">YL</span>
+                <img src="logo.png" alt="Yassine LAKHAL" class="logo-image">
             </div>
             <ul class="nav-menu">
                 <li class="nav-item">
@@ -78,6 +79,53 @@
         </div>
         <div class="scroll-indicator">
             <div class="scroll-arrow"></div>
+        </div>
+    </section>
+
+    <!-- Section Expériences Professionnelles -->
+    <section id="experience" class="experience">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Expériences Professionnelles</h2>
+                <p class="section-subtitle">Entreprises et laboratoires avec lesquels j'ai collaboré</p>
+            </div>
+            <div class="experience-grid">
+                <div class="experience-card">
+                    <div class="experience-logo">
+                        <a href="https://www.stellantis.com" target="_blank" rel="noopener">
+                            <img src="stellantis.png" alt="Stellantis">
+                        </a>
+                    </div>
+                    <div class="experience-info">
+                        <h3>Ingénieur Software – Stellantis</h3>
+                        <p class="experience-role">Carrières-sous-Poissy, France</p>
+                        <span class="experience-date">Février 2024 – Juillet 2024</span>
+                        <ul class="experience-highlights">
+                            <li>Conception d'une application cross-platform de planification de trajets pour véhicules électriques via Qt/Python.</li>
+                            <li>Intégration de données temps réel (trafic, météo, bornes de recharge) via API.</li>
+                            <li>Coordination avec l'équipe d'ingénierie pour aligner exigences et livrables.</li>
+                            <li>Validation du prototype au niveau TRL4, confirmant la faisabilité en labo.</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="experience-card">
+                    <div class="experience-logo">
+                        <a href="https://www.suezsmartsolutions.com" target="_blank" rel="noopener">
+                            <img src="suez.png" alt="Suez Smart Solutions">
+                        </a>
+                    </div>
+                    <div class="experience-info">
+                        <h3>Ingénieur Software – Suez Smart Solutions</h3>
+                        <p class="experience-role">Le Pecq, France</p>
+                        <span class="experience-date">Juin 2023 – Septembre 2023</span>
+                        <ul class="experience-highlights">
+                            <li>Conception d’une interface graphique pour modules radio et NFC des compteurs d’eau.</li>
+                            <li>Rédaction des spécifications, manuels utilisateurs et rapports de test.</li>
+                            <li>Amélioration UX réduisant le temps d’installation et de test pour les techniciens.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
 
@@ -397,6 +445,29 @@
                         <button class="btn btn-outline btn-modal" data-project="uml-convoyeur">Voir plus</button>
                     </div>
                 </div>
+
+                <div class="project-card" title="Cliquez pour voir les détails du projet Robotics Designs USA">
+                    <div class="project-image">
+                        <img src="robotics-1.png" alt="Robotics Designs Exchange">
+                        <div class="project-overlay">
+                            <h3 class="project-title">Robotics Designs – USA</h3>
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">Robotics Designs – USA</h3>
+                        <p class="project-description">
+                            Programme hebdomadaire de conception robotique lors de l'échange aux États-Unis, avec modélisation de robots
+                            adaptés à différentes technologies (suiveur de ligne, contrôle PID, capteurs spécifiques) dans un format concours.
+                        </p>
+                        <div class="project-tech">
+                            <span class="tech-tag">Robotics</span>
+                            <span class="tech-tag">PID</span>
+                            <span class="tech-tag">Capteurs</span>
+                            <span class="tech-tag">SolidWorks</span>
+                        </div>
+                        <button class="btn btn-outline btn-modal" data-project="robotics-designs">Voir plus</button>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
@@ -493,20 +564,39 @@
         <div class="modal-content">
             <span class="modal-close">&times;</span>
             <div class="modal-body">
+                <div class="modal-logo">
+                    <img src="logo.png" alt="Logo Yassine LAKHAL">
+                </div>
                 <div class="modal-image">
-                    <img id="modalImage" src="" alt="Project">
+                    <div class="modal-carousel" id="modalCarousel" aria-hidden="true">
+                        <button class="carousel-control prev" id="carouselPrev" aria-label="Image précédente">
+                            <i class="fas fa-chevron-left"></i>
+                        </button>
+                        <div class="carousel-track" id="modalCarouselTrack"></div>
+                        <button class="carousel-control next" id="carouselNext" aria-label="Image suivante">
+                            <i class="fas fa-chevron-right"></i>
+                        </button>
+                        <div class="carousel-indicators" id="modalCarouselIndicators"></div>
+                    </div>
+                    <div class="modal-image-single" id="modalImageSingle">
+                        <img id="modalImage" src="" alt="Project">
+                    </div>
                 </div>
                 <div class="modal-text">
                     <h2 id="modalTitle"></h2>
                     <div id="modalTechTags" class="modal-tech-tags"></div>
                     <div id="modalDescription" class="modal-description"></div>
+                    <div class="modal-videos" id="modalVideos" aria-hidden="true">
+                        <h3>Vidéos du projet</h3>
+                        <div class="video-grid" id="modalVideosGrid"></div>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 
     <script src="translations.js?v=2.0"></script>
-    <script src="script.js?v=3.3"></script>
+    <script src="script.js?v=3.5"></script>
     
 </body>
 </html>
