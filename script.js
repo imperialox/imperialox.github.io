@@ -49,7 +49,7 @@ const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
         if (entry.isIntersecting) {
             entry.target.classList.add('animated');
-            
+
             // Animer les cartes de compétences quand la section compétences est visible
             if (entry.target.id === 'skills') {
                 setTimeout(animateSkillCards, 300);
@@ -88,7 +88,7 @@ if (timeline) {
         block.style.transform = 'translateY(30px)';
         block.style.transition = 'all 0.6s ease-out';
     });
-    
+
     timelineObserver.observe(timeline);
 }
 
@@ -107,7 +107,7 @@ const animateText = () => {
     const name = document.querySelector('.name');
     const title = document.querySelector('.title');
     const slogan = document.querySelector('.hero-slogan');
-    
+
     // Animation du nom avec effet de brillance
     if (name) {
         name.style.opacity = '0';
@@ -116,7 +116,7 @@ const animateText = () => {
             name.style.transition = 'all 0.8s ease-out';
             name.style.opacity = '1';
             name.style.transform = 'translateY(0)';
-            
+
             // Ajouter un effet de brillance qui passe
             setTimeout(() => {
                 name.style.position = 'relative';
@@ -132,7 +132,7 @@ const animateText = () => {
                 `;
                 name.style.position = 'relative';
                 name.appendChild(shine);
-                
+
                 // Ajouter l'animation shine
                 const style = document.createElement('style');
                 style.textContent = `
@@ -145,7 +145,7 @@ const animateText = () => {
             }, 1000);
         }, 200);
     }
-    
+
     // Animation du titre avec gradient qui bouge
     if (title) {
         title.style.opacity = '0';
@@ -156,7 +156,7 @@ const animateText = () => {
             title.style.transform = 'translateY(0)';
         }, 400);
     }
-    
+
     // Animation du slogan
     if (slogan) {
         slogan.style.opacity = '0';
@@ -176,7 +176,7 @@ window.addEventListener('load', animateText);
 const typeWriter = (element, text, speed = 100) => {
     let i = 0;
     element.innerHTML = '';
-    
+
     const timer = setInterval(() => {
         if (i < text.length) {
             element.innerHTML += text.charAt(i);
@@ -190,12 +190,12 @@ const typeWriter = (element, text, speed = 100) => {
 // Animation des statistiques
 const animateCounters = () => {
     const counters = document.querySelectorAll('.stat-number');
-    
+
     counters.forEach(counter => {
         const target = parseInt(counter.textContent);
         const increment = target / 50;
         let current = 0;
-        
+
         const updateCounter = () => {
             if (current < target) {
                 current += increment;
@@ -205,7 +205,7 @@ const animateCounters = () => {
                 counter.textContent = target + (counter.textContent.includes('+') ? '+' : '');
             }
         };
-        
+
         updateCounter();
     });
 };
@@ -230,7 +230,7 @@ document.querySelectorAll('.project-card').forEach(card => {
     card.addEventListener('mouseenter', () => {
         card.style.transform = 'translateY(-10px) scale(1.02)';
     });
-    
+
     card.addEventListener('mouseleave', () => {
         card.style.transform = 'translateY(0) scale(1)';
     });
@@ -241,7 +241,7 @@ document.querySelectorAll('.skill-icon').forEach(icon => {
     icon.addEventListener('mouseenter', () => {
         icon.style.transform = 'rotate(360deg) scale(1.1)';
     });
-    
+
     icon.addEventListener('mouseleave', () => {
         icon.style.transform = 'rotate(0deg) scale(1)';
     });
@@ -274,33 +274,33 @@ const contactForm = document.querySelector('.form');
 if (contactForm) {
     contactForm.addEventListener('submit', async (e) => {
         e.preventDefault();
-        
+
         // Récupérer les données du formulaire
         const name = contactForm.querySelector('input[type="text"]').value.trim();
         const email = contactForm.querySelector('input[type="email"]').value.trim();
         const subject = contactForm.querySelectorAll('input[type="text"]')[1].value.trim();
         const message = contactForm.querySelector('textarea').value.trim();
-        
+
         // Validation basique
         if (!name || !email || !subject || !message) {
             showNotification('Veuillez remplir tous les champs du formulaire.', 'error');
             return;
         }
-        
+
         // Validation de l'email
         const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
         if (!emailRegex.test(email)) {
             showNotification('Veuillez entrer une adresse email valide.', 'error');
             return;
         }
-        
+
         const submitBtn = contactForm.querySelector('button[type="submit"]');
         const originalText = submitBtn.textContent;
-        
+
         // Désactiver le bouton et afficher le loading
         submitBtn.textContent = 'Envoi en cours...';
         submitBtn.disabled = true;
-        
+
         // Vérifier si EmailJS est configuré
         if (!EMAILJS_CONFIG.PUBLIC_KEY.startsWith('VOTRE_')) {
             try {
@@ -312,17 +312,17 @@ if (contactForm) {
                     message: message,
                     to_name: 'Yassine LAKHAL'
                 };
-                
+
                 // Envoyer l'email via EmailJS
                 await emailjs.send(
                     EMAILJS_CONFIG.SERVICE_ID,
                     EMAILJS_CONFIG.TEMPLATE_ID,
                     templateParams
                 );
-                
+
                 showNotification('Message envoyé avec succès ! Je vous répondrai bientôt.', 'success');
                 contactForm.reset();
-                
+
             } catch (error) {
                 console.error('Erreur EmailJS:', error);
                 showNotification('Erreur lors de l\'envoi. Veuillez réessayer.', 'error');
@@ -336,7 +336,7 @@ if (contactForm) {
             );
             contactForm.reset();
         }
-        
+
         // Réactiver le bouton
         submitBtn.textContent = originalText;
         submitBtn.disabled = false;
@@ -348,7 +348,7 @@ const showNotification = (message, type = 'info') => {
     // Supprimer les notifications existantes
     const existingNotifications = document.querySelectorAll('.notification');
     existingNotifications.forEach(notif => notif.remove());
-    
+
     // Créer la notification
     const notification = document.createElement('div');
     notification.className = `notification notification-${type}`;
@@ -369,21 +369,21 @@ const showNotification = (message, type = 'info') => {
         ${type === 'error' ? 'background: linear-gradient(135deg, #f44336, #d32f2f);' : ''}
         ${type === 'info' ? 'background: linear-gradient(135deg, #2196F3, #1976D2);' : ''}
     `;
-    
+
     notification.innerHTML = `
         <div style="display: flex; align-items: center; gap: 10px;">
             <i class="fas ${type === 'success' ? 'fa-check-circle' : type === 'error' ? 'fa-exclamation-circle' : 'fa-info-circle'}"></i>
             <span>${message}</span>
         </div>
     `;
-    
+
     document.body.appendChild(notification);
-    
+
     // Animation d'entrée
     setTimeout(() => {
         notification.style.transform = 'translateX(0)';
     }, 100);
-    
+
     // Supprimer après 5 secondes
     setTimeout(() => {
         notification.style.transform = 'translateX(100%)';
@@ -397,7 +397,7 @@ const showNotification = (message, type = 'info') => {
 const createParticles = () => {
     const particlesContainer = document.querySelector('.particles');
     if (!particlesContainer) return;
-    
+
     for (let i = 0; i < 50; i++) {
         const particle = document.createElement('div');
         particle.className = 'particle';
@@ -423,7 +423,7 @@ createParticles();
 const createBinaryRain = () => {
     const particlesContainer = document.querySelector('.particles');
     if (!particlesContainer) return;
-    
+
     // Créer des colonnes de nombres binaires
     for (let i = 0; i < 15; i++) {
         const column = document.createElement('div');
@@ -441,7 +441,7 @@ const createBinaryRain = () => {
             text-shadow: 0 0 5px rgba(0, 212, 255, 0.5);
             letter-spacing: 2px;
         `;
-        
+
         // Générer une chaîne de 0 et 1
         let binary = '';
         for (let j = 0; j < 20; j++) {
@@ -450,7 +450,7 @@ const createBinaryRain = () => {
         column.textContent = binary;
         particlesContainer.appendChild(column);
     }
-    
+
     // Ajouter l'animation CSS pour la chute
     const style = document.createElement('style');
     style.textContent = `
@@ -481,7 +481,7 @@ createBinaryRain();
 const updateActiveNav = () => {
     const sections = document.querySelectorAll('section');
     const navLinks = document.querySelectorAll('.nav-link');
-    
+
     let current = '';
     sections.forEach(section => {
         const sectionTop = section.offsetTop;
@@ -490,7 +490,7 @@ const updateActiveNav = () => {
             current = section.getAttribute('id');
         }
     });
-    
+
     navLinks.forEach(link => {
         link.classList.remove('active');
         if (link.getAttribute('href') === `#${current}`) {
@@ -504,12 +504,12 @@ window.addEventListener('scroll', updateActiveNav);
 // Animation de révélation progressive des éléments
 const revealElements = () => {
     const elements = document.querySelectorAll('.skill-category, .project-card, .contact-item');
-    
+
     elements.forEach((element, index) => {
         element.style.opacity = '0';
         element.style.transform = 'translateY(30px)';
         element.style.transition = `all 0.6s ease-out ${index * 0.1}s`;
-        
+
         const elementObserver = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
@@ -518,7 +518,7 @@ const revealElements = () => {
                 }
             });
         });
-        
+
         elementObserver.observe(element);
     });
 };
@@ -542,17 +542,17 @@ const createCustomCursor = () => {
         transition: transform 0.1s ease;
     `;
     document.body.appendChild(cursor);
-    
+
     document.addEventListener('mousemove', (e) => {
         cursor.style.left = e.clientX - 10 + 'px';
         cursor.style.top = e.clientY - 10 + 'px';
     });
-    
+
     document.querySelectorAll('a, button').forEach(element => {
         element.addEventListener('mouseenter', () => {
             cursor.style.transform = 'scale(1.5)';
         });
-        
+
         element.addEventListener('mouseleave', () => {
             cursor.style.transform = 'scale(1)';
         });
@@ -580,27 +580,27 @@ const lazyLoadImages = () => {
             }
         });
     });
-    
+
     images.forEach(img => imageObserver.observe(img));
 };
 
 // Animations pour la timeline du parcours
 const animateTimelineOnScroll = () => {
     const timelineBlocks = document.querySelectorAll('.timeline-block');
-    
+
     timelineBlocks.forEach((block, index) => {
         // Animation d'entrée depuis la gauche ou la droite
         block.style.opacity = '0';
-        
+
         if (block.classList.contains('timeline-left')) {
             block.style.transform = 'translateX(-50px)';
         } else {
             block.style.transform = 'translateX(50px)';
         }
-        
+
         block.style.transition = `all 0.8s cubic-bezier(0.4, 0, 0.2, 1) ${index * 0.15}s`;
     });
-    
+
     // Observer pour déclencher l'animation
     const timelineObserverAnim = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
@@ -613,7 +613,7 @@ const animateTimelineOnScroll = () => {
             }
         });
     }, { threshold: 0.2 });
-    
+
     const timelineContainer = document.querySelector('.modern-timeline');
     if (timelineContainer) {
         timelineObserverAnim.observe(timelineContainer);
@@ -623,7 +623,7 @@ const animateTimelineOnScroll = () => {
 // Effet de pulsation sur les logos de la timeline
 const pulseTimelineIcons = () => {
     const icons = document.querySelectorAll('.timeline-icon');
-    
+
     icons.forEach((icon, index) => {
         setTimeout(() => {
             icon.style.animation = 'pulse 2s ease-in-out infinite';
@@ -668,7 +668,7 @@ const animateTimelineLine = () => {
             }
         });
     }, { threshold: 0.1 });
-    
+
     const timelineContainer = document.querySelector('.modern-timeline');
     if (timelineContainer) {
         observer.observe(timelineContainer);
@@ -678,31 +678,31 @@ const animateTimelineLine = () => {
 // Initialisation
 document.addEventListener('DOMContentLoaded', () => {
     console.log('Portfolio de Yassine LAKHAL chargé avec succès !');
-    
+
     // Lancer les animations de la timeline
     addPulseAnimation();
     animateTimelineOnScroll();
-    
+
     // Pulse sur les icônes après un délai
     setTimeout(pulseTimelineIcons, 1000);
-    
+
     // Ajouter des effets interactifs aux cartes de timeline
     document.querySelectorAll('.timeline-card').forEach(card => {
         card.addEventListener('mouseenter', () => {
             // Trouver l'icône associée
             const block = card.closest('.timeline-block');
             const icon = block.querySelector('.timeline-icon');
-            
+
             // Effet sur la carte
             card.style.transform = 'translateY(-10px) scale(1.02)';
             card.style.boxShadow = '0 15px 40px rgba(0, 0, 0, 0.2)';
-            
+
             // Effet sur l'icône
             if (icon) {
                 icon.style.transform = 'translate(-50%, -50%) scale(1.15) rotate(5deg)';
                 icon.style.boxShadow = '0 10px 40px rgba(0, 212, 255, 0.6)';
             }
-            
+
             // Animer les tags
             const tags = card.querySelectorAll('.tag');
             tags.forEach((tag, index) => {
@@ -712,19 +712,19 @@ document.addEventListener('DOMContentLoaded', () => {
                 }, index * 50);
             });
         });
-        
+
         card.addEventListener('mouseleave', () => {
             const block = card.closest('.timeline-block');
             const icon = block.querySelector('.timeline-icon');
-            
+
             card.style.transform = 'translateY(0) scale(1)';
             card.style.boxShadow = '0 5px 20px rgba(0, 0, 0, 0.08)';
-            
+
             if (icon) {
                 icon.style.transform = 'translate(-50%, -50%) scale(1) rotate(0deg)';
                 icon.style.boxShadow = '0 5px 20px rgba(0, 212, 255, 0.3)';
             }
-            
+
             const tags = card.querySelectorAll('.tag');
             tags.forEach(tag => {
                 tag.style.transform = 'translateY(0)';
@@ -732,7 +732,7 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         });
     });
-    
+
     // Ajouter un effet de chargement
     const loader = document.createElement('div');
     loader.className = 'page-loader';
@@ -759,9 +759,9 @@ document.addEventListener('DOMContentLoaded', () => {
             animation: spin 1s linear infinite;
         "></div>
     `;
-    
+
     document.body.appendChild(loader);
-    
+
     // Masquer le loader après le chargement
     window.addEventListener('load', () => {
         setTimeout(() => {
@@ -799,10 +799,12 @@ const projectsData = {
     },
     'iot-intelligent': {
         title: 'Système IoT Intelligent',
-        image: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&h=600&fit=crop',
+        image: 'dashboard.png',
         tags: ['ESP32', 'MQTT', 'Node.js', 'MongoDB', 'Cloud'],
         description: `
-            <p>Conception et déploiement d'un réseau de capteurs IoT pour la surveillance environnementale en temps réel avec collecte, analyse et visualisation des données. Le système s'articule autour d'un réseau d'ESP32 équipés de capteurs (DHT22 pour température/humidité, MQ135 pour qualité d'air, BMP280 pour pression), communiquant via le protocole MQTT pour une transmission légère et efficace. Un backend Node.js gère le traitement et le stockage des données dans une base MongoDB optimisée pour les séries temporelles. Le dashboard React permet la visualisation en temps réel avec Chart.js et l'envoi d'alertes intelligentes si les seuils sont dépassés. Le système offre une latence moyenne de 150ms, une autonomie sur batterie de 48h et un taux de perte de paquets inférieur à 1%, avec un historique de données sur 6 mois.</p>
+            <p>J’ai développé une plateforme IoT complète composée d’un dashboard web et d’un système de gestion des appareils. Les utilisateurs peuvent créer un compte, connecter leurs microcontrôleurs (comme des ESP32) et visualiser en temps réel les données issues de leurs capteurs.
+Les appareils transmettent leurs mesures via MQTT, puis celles-ci sont enregistrées dans une base de données PostgreSQL.
+Le dashboard affiche les données collectées sous forme de graphiques et d’interprétations, permettant à chaque utilisateur de suivre et analyser facilement les informations provenant de ses différents devices IoT.</p>
         `
     },
     'sysml-automobile': {
@@ -867,16 +869,16 @@ let currentCarouselImages = [];
 
 function showSingleImage(src, alt) {
     if (!modalImageElement || !modalImageSingleWrapper || !modalCarousel) return;
-    
+
     modalImageSingleWrapper.style.display = 'block';
     modalImageElement.src = src;
     modalImageElement.alt = alt;
-    
+
     modalCarousel.classList.remove('active');
     modalCarousel.setAttribute('aria-hidden', 'true');
     if (modalCarouselTrack) modalCarouselTrack.innerHTML = '';
     if (modalCarouselIndicators) modalCarouselIndicators.innerHTML = '';
-    
+
     currentCarouselImages = [];
     currentCarouselIndex = 0;
 }
@@ -884,9 +886,9 @@ function showSingleImage(src, alt) {
 function updateCarousel() {
     if (!modalCarouselTrack || !modalCarouselIndicators) return;
     if (!currentCarouselImages.length) return;
-    
+
     modalCarouselTrack.style.transform = `translateX(-${currentCarouselIndex * 100}%)`;
-    
+
     const indicators = modalCarouselIndicators.querySelectorAll('button');
     indicators.forEach((indicator, index) => {
         const isActive = index === currentCarouselIndex;
@@ -897,36 +899,36 @@ function updateCarousel() {
 
 function setupCarousel(images = [], title = '') {
     if (!modalCarousel || !modalCarouselTrack || !modalCarouselIndicators || !modalImageSingleWrapper) return;
-    
+
     if (!images.length) {
         showSingleImage('', title);
         return;
     }
-    
+
     modalImageSingleWrapper.style.display = images.length > 1 ? 'none' : 'block';
-    
+
     if (images.length === 1) {
         showSingleImage(images[0], title);
         return;
     }
-    
+
     modalCarousel.classList.add('active');
     modalCarousel.setAttribute('aria-hidden', 'false');
-    
+
     modalCarouselTrack.innerHTML = images.map((src, index) => `
         <div class="carousel-slide">
             <img src="${src}" alt="${title} - image ${index + 1}">
         </div>
     `).join('');
-    
+
     modalCarouselIndicators.innerHTML = images.map((_, index) => `
         <button type="button" data-index="${index}" aria-label="Aller à l'image ${index + 1}"></button>
     `).join('');
-    
+
     currentCarouselImages = images;
     currentCarouselIndex = 0;
     updateCarousel();
-    
+
     const indicatorButtons = modalCarouselIndicators.querySelectorAll('button');
     indicatorButtons.forEach(button => {
         button.addEventListener('click', () => {
@@ -954,17 +956,17 @@ function goToNextSlide() {
 function populateProjectVideos(project) {
     if (!modalVideosSection || !modalVideosGrid) return;
     const videos = Array.isArray(project.videos) ? project.videos.slice(0, 3) : [];
-    
+
     if (!videos.length) {
         modalVideosSection.classList.remove('active');
         modalVideosSection.setAttribute('aria-hidden', 'true');
         modalVideosGrid.innerHTML = '';
         return;
     }
-    
+
     modalVideosSection.classList.add('active');
     modalVideosSection.setAttribute('aria-hidden', 'false');
-    
+
     modalVideosGrid.innerHTML = videos.map((video, index) => {
         const title = video?.title || `Vidéo ${index + 1}`;
         if (video?.url) {
@@ -1006,16 +1008,16 @@ if (carouselNextBtn) {
 function openProjectModal(projectId) {
     const modal = document.getElementById('projectModal');
     const project = projectsData[projectId];
-    
+
     if (!project) return;
-    
+
     // Remplir le contenu
     document.getElementById('modalTitle').textContent = project.title;
-    
+
     const hasGallery = Array.isArray(project.images) && project.images.length > 1;
     const hasSingleArrayImage = Array.isArray(project.images) && project.images.length === 1;
     const fallbackImage = project.image || (project.images && project.images[0]) || '';
-    
+
     if (hasGallery) {
         setupCarousel(project.images, project.title);
     } else if (hasSingleArrayImage) {
@@ -1023,19 +1025,19 @@ function openProjectModal(projectId) {
     } else {
         showSingleImage(fallbackImage, project.title);
     }
-    
+
     // Tags techniques
     const tagsContainer = document.getElementById('modalTechTags');
-    tagsContainer.innerHTML = project.tags.map(tag => 
+    tagsContainer.innerHTML = project.tags.map(tag =>
         `<span class="tech-tag">${tag}</span>`
     ).join('');
-    
+
     // Description
     document.getElementById('modalDescription').innerHTML = project.description;
-    
+
     // Vidéos
     populateProjectVideos(project);
-    
+
     // Afficher la modal
     modal.classList.add('active');
     document.body.style.overflow = 'hidden'; // Empêcher scroll page
@@ -1052,7 +1054,7 @@ function closeProjectModal() {
 document.addEventListener('DOMContentLoaded', () => {
     // Rendre toute la carte cliquable
     const projectCards = document.querySelectorAll('.project-card');
-    
+
     projectCards.forEach(card => {
         card.addEventListener('click', () => {
             const button = card.querySelector('.btn-modal');
@@ -1062,10 +1064,10 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     });
-    
+
     // Ancien système avec boutons (au cas où)
     const modalButtons = document.querySelectorAll('.btn-modal');
-    
+
     modalButtons.forEach(button => {
         button.addEventListener('click', (e) => {
             e.stopPropagation(); // Éviter double déclenchement
@@ -1073,13 +1075,13 @@ document.addEventListener('DOMContentLoaded', () => {
             openProjectModal(projectId);
         });
     });
-    
+
     // Fermer avec le bouton X
     const closeBtn = document.querySelector('.modal-close');
     if (closeBtn) {
         closeBtn.addEventListener('click', closeProjectModal);
     }
-    
+
     // Fermer en cliquant en dehors
     const modal = document.getElementById('projectModal');
     if (modal) {
@@ -1089,7 +1091,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     }
-    
+
     // Fermer avec la touche Échap
     document.addEventListener('keydown', (e) => {
         if (e.key === 'Escape') {
