@@ -799,12 +799,10 @@ const projectsData = {
     },
     'iot-intelligent': {
         title: 'Système IoT Intelligent',
-        image: 'dashboard.png',
+        image: 'dashboard_iot.png',
         tags: ['ESP32', 'MQTT', 'Node.js', 'MongoDB', 'Cloud'],
         description: `
-            <p>J’ai développé une plateforme IoT complète composée d’un dashboard web et d’un système de gestion des appareils. Les utilisateurs peuvent créer un compte, connecter leurs microcontrôleurs (comme des ESP32) et visualiser en temps réel les données issues de leurs capteurs.
-Les appareils transmettent leurs mesures via MQTT, puis celles-ci sont enregistrées dans une base de données PostgreSQL.
-Le dashboard affiche les données collectées sous forme de graphiques et d’interprétations, permettant à chaque utilisateur de suivre et analyser facilement les informations provenant de ses différents devices IoT.</p>
+            <p>J’ai développé une plateforme IoT complète composée d’un dashboard web et d’un système de gestion des appareils. Les utilisateurs peuvent créer un compte, connecter leurs microcontrôleurs (comme des ESP32) et visualiser en temps réel les données issues de leurs capteurs.Les appareils transmettent leurs mesures via MQTT, puis celles-ci sont enregistrées dans une base de données PostgreSQL.Le dashboard affiche les données collectées sous forme de graphiques et d’interprétations, permettant à chaque utilisateur de suivre et analyser facilement les informations provenant de ses différents devices IoT.</p>
         `
     },
     'sysml-automobile': {
